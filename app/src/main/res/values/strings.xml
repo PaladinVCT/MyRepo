@@ -13,4 +13,6 @@
     <string name="Madagaskar">Флаг Мадагаскара</string>
     <string name="Tailand">Флаг Тайланда</string>
     <string name="Denmark">Флаг Дании</string>
+    <string name="login">Login</string>
+    <string name="register">Register</string>
 </resources>
