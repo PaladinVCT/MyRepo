@@ -3,6 +3,7 @@ package android.itacademy.by.menu;
 import android.app.Activity;
 import android.content.Intent;
 import android.itacademy.by.dz1.FirstActivity;
+import android.itacademy.by.dz2.FlagsActivity;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.view.View;
@@ -15,6 +16,8 @@ public class MenuActivity extends Activity implements View.OnClickListener {
         setContentView(R.layout.menu);
         Button buttonDz1 = findViewById(R.id.buttonDz1);
         buttonDz1.setOnClickListener(this);
+        Button buttonDz2 = findViewById(R.id.buttonDz2);
+        buttonDz2.setOnClickListener(this);
 
 
     }
@@ -27,6 +30,13 @@ public class MenuActivity extends Activity implements View.OnClickListener {
             {
                 Intent intent = new Intent(this, FirstActivity.class);
                 startActivity(intent);
+                break;
+            }
+            case R.id.buttonDz2:
+            {
+                Intent intent2 = new Intent(this,FlagsActivity.class);
+                startActivity(intent2);
+                break;
             }
         }
 
