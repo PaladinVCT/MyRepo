@@ -1,4 +1,4 @@
-package android.itacademy.by.test;
+package android.itacademy.by.DZ1;
 
 import android.content.Context;
 import android.support.test.InstrumentationRegistry;
