@@ -1,4 +1,4 @@
-package android.itacademy.by.DZ1;
+package android.itacademy.by.dz1;
 
 import org.junit.Test;
 

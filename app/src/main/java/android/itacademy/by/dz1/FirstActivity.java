@@ -1,12 +1,14 @@
-package android.itacademy.by.DZ1;
+package android.itacademy.by.dz1;
 
 import android.app.Activity;
 import android.graphics.drawable.Drawable;
+import android.itacademy.by.menu.R;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+
 
 
 public class FirstActivity extends Activity implements View.OnClickListener {
