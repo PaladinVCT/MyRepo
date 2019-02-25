@@ -10,6 +10,8 @@ import android.widget.TextView;
 
 
 public class FirstActivity extends Activity implements View.OnClickListener {
+    final TextView textView1 = findViewById(R.id.textView1);
+    final TextView textView2 = findViewById(R.id.textView2);
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -18,34 +20,30 @@ public class FirstActivity extends Activity implements View.OnClickListener {
 
         Button button = findViewById(R.id.btn);
         button.setOnClickListener(this);
-        TextView textView1 = findViewById(R.id.textView1);
-        TextView textView2 = findViewById(R.id.textView2);
+
+        View.OnClickListener ocl = new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                changeTextBackground(textView1, textView2);
+            }
+        };
 
         textView1.setOnClickListener(ocl);
 
         textView2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                changeTextBackground();
+                changeTextBackground(textView1, textView2);
             }
         });
     }
 
-    View.OnClickListener ocl = new View.OnClickListener() {
-        @Override
-        public void onClick(View v) {
-            changeTextBackground();
-        }
-    };
-
     @Override
     public void onClick(View v) {
-        changeTextBackground();
+        changeTextBackground(textView1, textView2);
     }
 
-    public void changeTextBackground() {
-        TextView textView1 = findViewById(R.id.textView1);
-        TextView textView2 = findViewById(R.id.textView2);
+    public void changeTextBackground(TextView textView1, TextView textView2) {
         String tempText = textView1.getText().toString();
         textView1.setText(textView2.getText());
         textView2.setText(tempText);
