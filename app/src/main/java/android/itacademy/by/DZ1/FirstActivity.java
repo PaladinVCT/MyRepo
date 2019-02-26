@@ -43,7 +43,6 @@ public class FirstActivity extends Activity implements View.OnClickListener {
     }
 
     public void changeTextBackground() {
-
         String tempText = tv1.getText().toString();
         tv1.setText(tv2.getText());
         tv2.setText(tempText);
