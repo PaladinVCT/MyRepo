@@ -19,11 +19,9 @@ public class FirstActivity extends Activity implements View.OnClickListener {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_first);
 
-        TextView textView1 = findViewById(R.id.textView1);
-        TextView textView2 = findViewById(R.id.textView2);
+        TextView tv1 = findViewById(R.id.textView1);
+        TextView tv2 = findViewById(R.id.textView2);
 
-        tv1 = textView1;
-        tv2 = textView2;
 
         Button button = findViewById(R.id.btn);
         button.setOnClickListener(this);
@@ -35,9 +33,9 @@ public class FirstActivity extends Activity implements View.OnClickListener {
             }
         };
 
-        textView1.setOnClickListener(ocl);
+        tv1.setOnClickListener(ocl);
 
-        textView2.setOnClickListener(new View.OnClickListener() {
+        tv2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 changeTextBackground();
