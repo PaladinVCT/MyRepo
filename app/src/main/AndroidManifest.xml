@@ -24,7 +24,7 @@
         <activity
             android:name="android.itacademy.by.dz2.FlagsActivity"
             android:label="Домашнее задание №2"></activity>
-        <activity android:name="android.itacademy.by.login.LoginActivity" android:screenOrientation="portrait"></activity>
+        <activity android:name="android.itacademy.by.dz3.LoginActivity" android:screenOrientation="portrait"></activity>
 
 
     </application>

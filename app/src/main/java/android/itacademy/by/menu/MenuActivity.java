@@ -4,7 +4,7 @@ import android.app.Activity;
 import android.content.Intent;
 import android.itacademy.by.dz1.FirstActivity;
 import android.itacademy.by.dz2.FlagsActivity;
-import android.itacademy.by.login.LoginActivity;
+import android.itacademy.by.dz3.LoginActivity;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.view.View;

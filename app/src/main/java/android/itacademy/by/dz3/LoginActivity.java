@@ -1,4 +1,4 @@
-package android.itacademy.by.login;
+package android.itacademy.by.dz3;
 
 import android.app.Activity;
 import android.itacademy.by.menu.R;
