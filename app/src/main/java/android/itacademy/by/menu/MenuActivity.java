@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.Intent;
 import android.itacademy.by.dz1.FirstActivity;
 import android.itacademy.by.dz2.FlagsActivity;
+import android.itacademy.by.dz3.ImageActivity;
 import android.itacademy.by.dz3.LoginActivity;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -44,7 +45,11 @@ public class MenuActivity extends Activity implements View.OnClickListener {
                 Intent intent3 = new Intent(this, LoginActivity.class);
                 startActivity(intent3);
                 break;
-        }
 
+            case R.id.dz3:
+                Intent intent4 = new Intent(this, ImageActivity.class);
+                startActivity(intent4);
+                break;
+        }
     }
 }

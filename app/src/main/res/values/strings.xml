@@ -23,4 +23,6 @@
     <string name="forgot"><u> Forgot your username/password? </u></string>
     <string name="enter_link">Вставьте ссылку на картинку</string>
     <string name="get_image">Получить картинку</string>
+    <string name="login_page">Login page</string>
+    <string name="load_image">ДЗ_3</string>
 </resources>
