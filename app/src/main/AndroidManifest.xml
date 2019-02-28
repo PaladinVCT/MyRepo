@@ -1,5 +1,5 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="android.itacademy.by.DZ1">
+    package="android.itacademy.by.menu">
 
     <application
         android:allowBackup="true"
@@ -9,13 +9,23 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
 
-        <activity android:name="android.itacademy.by.DZ1.FirstActivity">
+        <activity android:name="android.itacademy.by.menu.MenuActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-
         </activity>
+
+
+        <activity
+            android:name="android.itacademy.by.dz1.FirstActivity"
+            android:label="Домашнее задание №1"></activity>
+
+        <activity
+            android:name="android.itacademy.by.dz2.FlagsActivity"
+            android:label="Домашнее задание №2"></activity>
+        <activity android:name="android.itacademy.by.login.LoginActivity" android:screenOrientation="portrait"></activity>
+
 
     </application>
 

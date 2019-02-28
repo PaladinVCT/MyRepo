@@ -3,4 +3,16 @@
     <string name="text1">Hello</string>
     <string name="text2">World</string>
     <string name="push">Push</string>
+    <string name="chooseDz">Выберите № домашнего задания</string>
+    <string name="Dz1">ДЗ_1</string>
+    <string name="Dz2">ДЗ_2</string>
+    <string name="Austria">Флаг Австрии</string>
+    <string name="Poland">Флаг Польши</string>
+    <string name="Italy">Флаг Италии</string>
+    <string name="Columbia">Флаг Колумбии</string>
+    <string name="Madagaskar">Флаг Мадагаскара</string>
+    <string name="Tailand">Флаг Тайланда</string>
+    <string name="Denmark">Флаг Дании</string>
+    <string name="login">Login</string>
+    <string name="register">Register</string>
 </resources>
