@@ -11,6 +11,8 @@ import android.widget.ImageView;
 
 import com.squareup.picasso.Picasso;
 
+import jp.wasabeef.picasso.transformations.CropCircleTransformation;
+
 public class ImageActivity extends Activity implements View.OnClickListener {
     private ImageView image;
     private EditText url;
@@ -25,6 +27,8 @@ public class ImageActivity extends Activity implements View.OnClickListener {
         image = findViewById(R.id.imageShow);
         url = findViewById(R.id.urlText);
 
+
+
     }
 
     @Override
@@ -38,6 +42,8 @@ public class ImageActivity extends Activity implements View.OnClickListener {
                 .placeholder(R.drawable.progress)
                 .error(R.mipmap.ic_launcher_round)
                 .centerCrop()
+                .transform(new CropCircleTransformation())
                 .into(image);
     }
+
 }
