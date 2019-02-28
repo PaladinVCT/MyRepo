@@ -22,6 +22,8 @@ public class MenuActivity extends Activity implements View.OnClickListener {
         buttonDz2.setOnClickListener(this);
         Button buttonLogin = findViewById(R.id.buttonLogin);
         buttonLogin.setOnClickListener(this);
+        Button buttonDz3 = findViewById(R.id.dz3);
+        buttonDz3.setOnClickListener(this);
 
 
 

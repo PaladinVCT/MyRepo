@@ -12,14 +12,12 @@
         <item name="android:textColorHint">@color/white</item>
         <item name="android:fontFamily">@font/monda_regular</item>
         <item name="android:background">@color/loginTransparent</item>
-        <item name="android:layout_marginLeft">30dp</item>
-        <item name="android:layout_marginRight">30dp</item>
+        <item name="android:layout_gravity">center</item>
         <item name="android:paddingLeft">10dp</item>
     </style>
 
     <style name="buttonLogin">
-        <item name="android:layout_marginRight">30dp</item>
-        <item name="android:layout_marginLeft">30dp</item>
+      <item name="android:layout_gravity">center</item>
         <item name="android:textColor">@color/white</item>
         <item name="android:fontFamily">@font/monda_bold</item>
         <item name="android:textSize">16sp</item>
