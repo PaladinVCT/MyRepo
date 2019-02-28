@@ -21,4 +21,6 @@
     <string name="registr">REGISTER</string>
     <string name="create_account">CREATE ACCOUNT</string>
     <string name="forgot"><u> Forgot your username/password? </u></string>
+    <string name="enter_link">Вставьте ссылку на картинку</string>
+    <string name="get_image">Получить картинку</string>
 </resources>
