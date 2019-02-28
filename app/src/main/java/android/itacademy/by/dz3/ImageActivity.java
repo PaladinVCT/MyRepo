@@ -16,7 +16,6 @@ import jp.wasabeef.picasso.transformations.CropCircleTransformation;
 public class ImageActivity extends Activity implements View.OnClickListener {
     private ImageView image;
     private EditText url;
-    private String textLink;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -26,13 +25,11 @@ public class ImageActivity extends Activity implements View.OnClickListener {
         button.setOnClickListener(this);
         image = findViewById(R.id.imageShow);
         url = findViewById(R.id.urlText);
-
-
-
     }
 
     @Override
     public void onClick(View v) {
+        String textLink;
         if (url.getText().toString().equals("")) {
             textLink = "https://366days.ru/media/article_images/760/CjvM8AP2-6E.jpg";
         } else textLink = url.getText().toString();
@@ -45,5 +42,4 @@ public class ImageActivity extends Activity implements View.OnClickListener {
                 .transform(new CropCircleTransformation())
                 .into(image);
     }
-
 }

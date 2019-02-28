@@ -19,14 +19,12 @@
         android:layout_margin="16dp"
         android:orientation="vertical">
 
-
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_marginTop="80dp"
             android:background="@drawable/login_logo" />
-
 
         <EditText
             style="@style/loginEditText"
@@ -37,7 +35,6 @@
             android:drawablePadding="10dp"
             android:hint="@string/username"
             android:inputType="text" />
-
 
         <EditText
             style="@style/loginEditText"
@@ -77,6 +74,5 @@
             android:layout_height="50dp"
             android:background="@color/buttonCreateAcc"
             android:text="@string/create_account" />
-
     </LinearLayout>
 </FrameLayout>
