@@ -15,4 +15,14 @@
     <string name="Denmark">Флаг Дании</string>
     <string name="login">Login</string>
     <string name="register">Register</string>
+    <string name="username">Username</string>
+    <string name="password">Password</string>
+    <string name="log_in">LOG IN</string>
+    <string name="registr">REGISTER</string>
+    <string name="create_account">CREATE ACCOUNT</string>
+    <string name="forgot"><u> Forgot your username/password? </u></string>
+    <string name="enter_link">Вставьте ссылку на картинку</string>
+    <string name="get_image">Получить картинку</string>
+    <string name="login_page">Login page</string>
+    <string name="load_image">ДЗ_3</string>
 </resources>
