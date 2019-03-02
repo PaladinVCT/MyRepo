@@ -13,8 +13,10 @@ import android.widget.TextView;
 
 public class FirstActivity extends Activity implements View.OnClickListener {
 
+
    private TextView tv1;
    private TextView tv2;
+
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
