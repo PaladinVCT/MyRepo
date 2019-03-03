@@ -32,6 +32,8 @@
             android:layout_gravity="center"
             android:layout_marginTop="30dp"
             android:background="@drawable/button_selector"
+        android:textColor="@color/button_selector2"
             android:text="@string/get_image" />
+
     </LinearLayout>
 </ScrollView>

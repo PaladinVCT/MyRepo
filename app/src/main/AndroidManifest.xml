@@ -1,7 +1,5 @@
 <manifest
-
     xmlns:android="http://schemas.android.com/apk/res/android"
-
     package="android.itacademy.by.menu">
 
     <application
@@ -36,11 +34,12 @@
         <activity android:name="android.itacademy.by.dz3.ImageActivity">
 
         </activity>
-        <activity android:name="android.itacademy.by.cw4.cw4Activity">
+        <activity android:name="android.itacademy.by.dz4.ClockActivity">
 
         </activity>
-
+<activity android:name="android.itacademy.by.dz4.SovaActivity"/>
     </application>
+
 
     <uses-permission android:name="android.permission.INTERNET" />
 

@@ -25,4 +25,6 @@
     <string name="get_image">Получить картинку</string>
     <string name="login_page">Login page</string>
     <string name="load_image">ДЗ_3</string>
+    <string name="dz_4">ДЗ_4</string>
+    <string name="show_oal">показать сову</string>
 </resources>
