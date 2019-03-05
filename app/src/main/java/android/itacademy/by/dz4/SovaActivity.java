@@ -13,9 +13,8 @@ public class SovaActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.sova_layout);
         ImageView view = findViewById(R.id.sovaView);
-        AnimationDrawable sovaAnimation = (AnimationDrawable)view.getBackground();
+        AnimationDrawable sovaAnimation = (AnimationDrawable) view.getBackground();
         sovaAnimation.start();
-
     }
 
     @Override

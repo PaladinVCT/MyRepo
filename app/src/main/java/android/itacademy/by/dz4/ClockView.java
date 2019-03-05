@@ -1,9 +1,11 @@
 package android.itacademy.by.dz4;
 
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
+import android.graphics.RectF;
 import android.support.annotation.Nullable;
 import android.util.AttributeSet;
 import android.view.View;
@@ -11,9 +13,12 @@ import android.view.View;
 import java.util.Calendar;
 
 public class ClockView extends View {
+
     private Paint paint = new Paint();
     private int hour = Calendar.getInstance().get(Calendar.HOUR);
     private int minute = Calendar.getInstance().get(Calendar.MINUTE);
+    private int seconds = Calendar.getInstance().get(Calendar.SECOND);
+    private RectF rectf = new RectF();
 
 
     public ClockView(Context context) {
@@ -30,6 +35,19 @@ public class ClockView extends View {
 
     public ClockView(Context context, @Nullable AttributeSet attrs, int defStyleAttr, int defStyleRes) {
         super(context, attrs, defStyleAttr, defStyleRes);
+    }
+
+    public float[] calculate() {
+        float[] nums = new float[3];
+
+        for (int i = 0; i < ClockActivity.NUMS.length; i++) {
+            nums[i] = ClockActivity.NUMS[i];
+        }
+        float[] degrees = new float[3];
+        degrees[0] = (nums[0] / (nums[0] + nums[1] + nums[2])) * 360;
+        degrees[1] = (nums[1] / (nums[0] + nums[1] + nums[2])) * 360;
+        degrees[2] = (nums[2] / (nums[0] + nums[1] + nums[2])) * 360;
+        return degrees;
     }
 
     @Override
@@ -58,7 +76,6 @@ public class ClockView extends View {
         }
         canvas.restore();
 
-
         paint.setStrokeWidth(3);
         paint.setTextSize(35f);
         canvas.drawText("12", cx - 20, (cy - radius - 10), paint);
@@ -71,14 +88,54 @@ public class ClockView extends View {
 
         canvas.save();
         paint.setStrokeWidth(15);
-        canvas.rotate((float)(30 * hour+minute*0.5), cx, cy);
+        canvas.rotate((float) (30 * hour + minute * 0.5), cx, cy);
         canvas.drawLine(cx, cy, cx, cy - radius + 100, paint);
         canvas.restore();
-
+        canvas.save();
         paint.setStrokeWidth(10);
         canvas.rotate(6 * minute, cx, cy);
         canvas.drawLine(cx, cy, cx, cy - radius + 50, paint);
+        canvas.restore();
 
+
+        paint.setStyle(Paint.Style.FILL);
+        rectf.left = cx - radius;
+        rectf.top = cy + 2 * radius;
+        rectf.right = cx + radius;
+        rectf.bottom = cy + 4 * radius;
+
+        float[] nums = calculate();
+
+        paint.setColor(Color.RED);
+        canvas.drawArc(rectf, 270f - nums[1] / 2, nums[1], true, paint);
+
+        paint.setColor(Color.GRAY);
+        paint.setStrokeWidth(5);
+        canvas.drawLine(cx, cy + 2 * radius, cx, cy + 2 * radius - 10, paint);
+        paint.setStrokeWidth(10);
+        canvas.drawPoint(cx, cy + 2 * radius - 15, paint);
+
+        canvas.rotate(nums[1] / 2, cx, cy + 3 * radius);
+
+        paint.setColor(Color.BLUE);
+        canvas.drawArc(rectf, 270f, nums[0], true, paint);
+        canvas.rotate(nums[0] / 2, cx, cy + 3 * radius);
+        paint.setColor(Color.GRAY);
+        paint.setStrokeWidth(5);
+        canvas.drawLine(cx, cy + 2 * radius, cx, cy + 2 * radius - 10, paint);
+        paint.setStrokeWidth(10);
+        canvas.drawPoint(cx, cy + 2 * radius - 15, paint);
+
+        canvas.rotate(nums[0] / 2, cx, cy + 3 * radius);
+
+        paint.setColor(Color.GREEN);
+        canvas.drawArc(rectf, 270f, nums[2], true, paint);
+        canvas.rotate(nums[2] / 2, cx, cy + 3 * radius);
+        paint.setColor(Color.GRAY);
+        paint.setStrokeWidth(5);
+        canvas.drawLine(cx, cy + 2 * radius, cx, cy + 2 * radius - 10, paint);
+        paint.setStrokeWidth(10);
+        canvas.drawPoint(cx, cy + 2 * radius - 15, paint);
 
     }
 }
