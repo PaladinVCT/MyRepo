@@ -14,7 +14,7 @@ import android.view.View;
 import android.widget.Button;
 
 public class MenuActivity extends Activity implements View.OnClickListener {
-    private int[] diagNums = {3, 5, 12};
+    private int[] diagNums = {10, 5, 3};
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -32,13 +32,11 @@ public class MenuActivity extends Activity implements View.OnClickListener {
         buttonDz4.setOnClickListener(this);
         Button sova = findViewById(R.id.sovaButton);
         sova.setOnClickListener(this);
-
     }
 
     @Override
     public void onClick(View v) {
 
-        String diagKey = "diag";
         switch (v.getId()) {
             case R.id.buttonDz1: {
                 Intent intent = new Intent(this, FirstActivity.class);
@@ -61,7 +59,6 @@ public class MenuActivity extends Activity implements View.OnClickListener {
                 break;
             case R.id.dz4:
                 Intent intent5 = new Intent(this, ClockActivity.class);
-                intent5.putExtra(diagKey, diagNums);
                 startActivity(intent5);
                 overridePendingTransition(R.anim.entering, R.anim.exiting);
                 break;
