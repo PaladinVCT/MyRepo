@@ -32,4 +32,7 @@
     <string name="number1">Число 1</string>
     <string name="drawDiagram">Построить диаграмму</string>
     <string name="nowTime">Текущее время:</string>
+    <string name="dz_5">ДЗ_5</string>
+    <string name="turn_on">ВКЛ WiFi</string>
+    <string name="turn_off">ВЫКЛ WiFi</string>
 </resources>

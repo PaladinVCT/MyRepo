@@ -1,5 +1,4 @@
-<manifest
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="android.itacademy.by.menu">
 
     <application
@@ -10,6 +9,20 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
 
+        <service
+            android:name="android.itacademy.by.dz5.MyService"
+            android:enabled="true">
+            <intent-filter>
+                <action android:name="android.itacademy.by.dz5.MyService" />
+            </intent-filter>
+        </service>
+
+        <receiver android:name="android.itacademy.by.dz5.WifiGlobalReceiver">
+            <intent-filter>
+                <action android:name="android.net.wifi.WIFI_STATE_CHANGED" />
+                <action android:name="android.net.wifi.STATE_CHANGE" />
+            </intent-filter>
+        </receiver>
 
         <activity android:name="android.itacademy.by.menu.MenuActivity">
             <intent-filter>
@@ -37,10 +50,14 @@
         <activity android:name="android.itacademy.by.dz4.ClockActivity">
 
         </activity>
-<activity android:name="android.itacademy.by.dz4.SovaActivity"/>
+        <activity android:name="android.itacademy.by.dz4.SovaActivity" />
+
+        <activity android:name="android.itacademy.by.dz5.dz5Activity" />
+
     </application>
 
-
     <uses-permission android:name="android.permission.INTERNET" />
-
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE"/>
 </manifest>
