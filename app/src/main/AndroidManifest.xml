@@ -53,6 +53,7 @@
         <activity android:name="android.itacademy.by.dz4.SovaActivity" />
 
         <activity android:name="android.itacademy.by.dz5.dz5Activity" />
+        <activity android:name="android.itacademy.by.cw6.cw6Activity"/>
 
     </application>
 
