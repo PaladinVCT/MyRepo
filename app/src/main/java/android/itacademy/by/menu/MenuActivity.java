@@ -9,6 +9,7 @@ import android.itacademy.by.dz3.LoginActivity;
 import android.itacademy.by.dz4.ClockActivity;
 import android.itacademy.by.dz4.SovaActivity;
 import android.itacademy.by.dz5.dz5Activity;
+import android.itacademy.by.dz6.dz6_Activity;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.view.View;
@@ -35,6 +36,8 @@ public class MenuActivity extends Activity implements View.OnClickListener {
         sova.setOnClickListener(this);
         Button dz5Button = findViewById(R.id.dz5Button);
         dz5Button.setOnClickListener(this);
+        Button dz6Button = findViewById(R.id.dz6Button);
+        dz6Button.setOnClickListener(this);
 
     }
 
@@ -74,6 +77,11 @@ public class MenuActivity extends Activity implements View.OnClickListener {
             case R.id.dz5Button:
                 Intent intent7 = new Intent(this, dz5Activity.class);
                 startActivity(intent7);
+                overridePendingTransition(R.anim.entering,R.anim.exiting);
+                break;
+            case R.id.dz6Button:
+                Intent intent8 = new Intent(this, dz6_Activity.class);
+                startActivity(intent8);
                 overridePendingTransition(R.anim.entering,R.anim.exiting);
                 break;
         }

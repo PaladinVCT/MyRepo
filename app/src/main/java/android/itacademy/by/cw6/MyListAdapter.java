@@ -1,5 +1,6 @@
 package android.itacademy.by.cw6;
 
+import android.itacademy.by.dz6.Student;
 import android.itacademy.by.menu.R;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;

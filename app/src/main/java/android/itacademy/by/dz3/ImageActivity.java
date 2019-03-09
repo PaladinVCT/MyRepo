@@ -33,7 +33,7 @@ public class ImageActivity extends Activity implements View.OnClickListener {
         if (url.getText().toString().equals("")) {
             textLink = "https://366days.ru/media/article_images/760/CjvM8AP2-6E.jpg";
         } else textLink = url.getText().toString();
-        Picasso.with(this)
+        Picasso.get()
                 .load(textLink)
                 .resize(640, 640)
                 .placeholder(R.drawable.progress)
