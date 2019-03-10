@@ -53,13 +53,14 @@
         <activity android:name="android.itacademy.by.dz4.SovaActivity" />
 
         <activity android:name="android.itacademy.by.dz5.dz5Activity" />
-        <activity android:name="android.itacademy.by.cw6.cw6Activity"/>
-        <activity android:name="android.itacademy.by.dz6.dz6_Activity"/>
+        <activity android:name="android.itacademy.by.cw6.cw6Activity" />
+        <activity android:name="android.itacademy.by.dz6.dz6Activity" />
+        <activity android:name="android.itacademy.by.dz6.EditStudentActivity" />
 
     </application>
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
-    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE"/>
+    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
 </manifest>

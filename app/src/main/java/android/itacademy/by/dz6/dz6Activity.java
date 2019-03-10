@@ -7,7 +7,7 @@ import android.support.annotation.Nullable;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 
-public class dz6_Activity extends Activity {
+public class dz6Activity extends Activity {
     private RecyclerView rView;
     private StudentAdapter adapter = new StudentAdapter();
 
@@ -20,6 +20,18 @@ public class dz6_Activity extends Activity {
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
         rView.setLayoutManager(linearLayoutManager);
         rView.setAdapter(adapter);
+        overridePendingTransition(R.anim.entering, R.anim.exiting);
+    }
 
+    @Override
+    protected void onResume() {
+        adapter.notifyDataSetChanged();
+        super.onResume();
+    }
+
+    @Override
+    protected void onPause() {
+        adapter.notifyDataSetChanged();
+        super.onPause();
     }
 }

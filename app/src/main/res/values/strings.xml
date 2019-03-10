@@ -36,4 +36,6 @@
     <string name="dz_6">ДЗ_6</string>
     <string name="turn_on">ВКЛ WiFi</string>
     <string name="turn_off">ВЫКЛ WiFi</string>
+    <string name="save_student">SAVE</string>
+    <string name="delete_student">DELETE</string>
 </resources>
