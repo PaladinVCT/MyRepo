@@ -44,19 +44,27 @@
             android:name="android.itacademy.by.dz3.LoginActivity"
             android:screenOrientation="portrait"></activity>
 
-        <activity android:name="android.itacademy.by.dz3.ImageActivity">
+        <activity
+            android:name="android.itacademy.by.dz3.ImageActivity"
+            android:screenOrientation="portrait">
 
         </activity>
-        <activity android:name="android.itacademy.by.dz4.ClockActivity">
+        <activity
+            android:name="android.itacademy.by.dz4.ClockActivity"
+            android:screenOrientation="portrait">
 
         </activity>
-        <activity android:name="android.itacademy.by.dz4.SovaActivity" />
+        <activity
+            android:name="android.itacademy.by.dz4.SovaActivity"
+            android:screenOrientation="portrait" />
 
         <activity android:name="android.itacademy.by.dz5.dz5Activity" />
         <activity android:name="android.itacademy.by.cw6.cw6Activity" />
-        <activity android:name="android.itacademy.by.dz6.dz6Activity" />
+        <activity
+            android:name="android.itacademy.by.dz6.dz6Activity"
+            android:screenOrientation="portrait" />
         <activity android:name="android.itacademy.by.dz6.EditStudentActivity" />
-
+        <activity android:name="android.itacademy.by.dz6.CreateStudentActivity" />
     </application>
 
     <uses-permission android:name="android.permission.INTERNET" />

@@ -38,4 +38,8 @@
     <string name="turn_off">ВЫКЛ WiFi</string>
     <string name="save_student">SAVE</string>
     <string name="delete_student">DELETE</string>
+    <string name="create_student">CREATE</string>
+    <string name="photo_url">Photo url</string>
+    <string name="first_name">First Name</string>
+    <string name="last_name">Last Name</string>
 </resources>

@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_margin="16dp"
+    android:layout_weight="1"
+    android:background="@color/grey_background"
+    android:orientation="vertical">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40dp" />
+
+    <EditText
+        android:id="@+id/createStudentPhoto"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        android:hint="@string/photo_url" />
+
+    <EditText
+        android:id="@+id/createStudentName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        android:hint="@string/first_name" />
+
+    <EditText
+        android:id="@+id/createStudentLastname"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        android:hint="@string/last_name" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/studentCreateButton"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="20dp"
+            android:layout_marginBottom="10dp"
+            android:layout_weight="1"
+            android:background="@drawable/button_selector"
+            android:text="@string/create_student" />
+
+
+    </LinearLayout>
+
+</LinearLayout>
