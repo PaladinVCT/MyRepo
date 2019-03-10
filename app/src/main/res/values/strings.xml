@@ -25,4 +25,11 @@
     <string name="get_image">Получить картинку</string>
     <string name="login_page">Login page</string>
     <string name="load_image">ДЗ_3</string>
+    <string name="dz_4">ДЗ_4</string>
+    <string name="show_oal">показать сову</string>
+    <string name="number3">Число 3</string>
+    <string name="number2">Число 2</string>
+    <string name="number1">Число 1</string>
+    <string name="drawDiagram">Построить диаграмму</string>
+    <string name="nowTime">Текущее время:</string>
 </resources>

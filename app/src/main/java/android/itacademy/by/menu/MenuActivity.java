@@ -2,16 +2,20 @@ package android.itacademy.by.menu;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.itacademy.by.dz4.ClockActivity;
 import android.itacademy.by.dz1.FirstActivity;
 import android.itacademy.by.dz2.FlagsActivity;
 import android.itacademy.by.dz3.ImageActivity;
 import android.itacademy.by.dz3.LoginActivity;
+import android.itacademy.by.dz4.SovaActivity;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.view.View;
 import android.widget.Button;
 
 public class MenuActivity extends Activity implements View.OnClickListener {
+    private int[] diagNums = {10, 5, 3};
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -24,9 +28,10 @@ public class MenuActivity extends Activity implements View.OnClickListener {
         buttonLogin.setOnClickListener(this);
         Button buttonDz3 = findViewById(R.id.dz3);
         buttonDz3.setOnClickListener(this);
-
-
-
+        Button buttonDz4 = findViewById(R.id.dz4);
+        buttonDz4.setOnClickListener(this);
+        Button sova = findViewById(R.id.sovaButton);
+        sova.setOnClickListener(this);
     }
 
     @Override
@@ -52,6 +57,15 @@ public class MenuActivity extends Activity implements View.OnClickListener {
                 Intent intent4 = new Intent(this, ImageActivity.class);
                 startActivity(intent4);
                 break;
+            case R.id.dz4:
+                Intent intent5 = new Intent(this, ClockActivity.class);
+                startActivity(intent5);
+                overridePendingTransition(R.anim.entering, R.anim.exiting);
+                break;
+            case R.id.sovaButton:
+                Intent intent6 = new Intent(this, SovaActivity.class);
+                startActivity(intent6);
+                overridePendingTransition(R.anim.entering, R.anim.exiting);
         }
     }
 }
