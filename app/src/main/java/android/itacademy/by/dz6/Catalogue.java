@@ -42,4 +42,8 @@ public class Catalogue {
     public int countStudents(){
         return list.size();
     }
+
+    public List<Student> getFullList(){
+        return list;
+    }
 }

@@ -40,6 +40,7 @@ public class CreateStudentActivity extends Activity implements View.OnClickListe
         Catalogue.getInstance()
                 .addStudent(new Student(firstName.getText().toString(), lastName.getText()
                         .toString(), photo.getText().toString()));
+
         onBackPressed();
     }
 
