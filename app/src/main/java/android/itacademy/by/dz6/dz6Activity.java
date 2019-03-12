@@ -56,6 +56,7 @@ public class dz6Activity extends Activity implements View.OnClickListener {
                 filter(s.toString());
             }
         });
+
         for (int i = 0; i < Catalogue.getInstance().countStudents(); i++) {
             catalogueCopy.add(Catalogue.getInstance().getStudent(i));
         }
@@ -81,6 +82,12 @@ public class dz6Activity extends Activity implements View.OnClickListener {
 
     @Override
     protected void onResume() {
+        catalogueCopy.clear();
+
+        for (int i = 0; i < Catalogue.getInstance().countStudents(); i++) {
+            catalogueCopy.add(Catalogue.getInstance().getStudent(i));
+        }
+
         adapter.notifyDataSetChanged();
         super.onResume();
     }
