@@ -5,7 +5,6 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
-import android.itacademy.by.menu.R;
 import android.net.wifi.WifiManager;
 import android.os.Binder;
 import android.os.IBinder;
@@ -13,51 +12,31 @@ import android.support.annotation.Nullable;
 import android.support.v4.content.LocalBroadcastManager;
 import android.util.Log;
 
-import static android.net.wifi.WifiManager.WIFI_STATE_DISABLED;
-import static android.net.wifi.WifiManager.WIFI_STATE_ENABLED;
-
 public class MyService extends Service {
-    private BroadcastReceiver listenerOn;
-    private BroadcastReceiver listenerOff;
-    private LocalBroadcastManager localBroadcastManager;
+    private BroadcastReceiver globalReceiver;
+    private Intent on = new Intent("WIFI_IS_ENABLED_NOW");
+    private Intent off = new Intent("WIFI_IS_DISABLED_NOW");
 
     @Override
     public void onCreate() {
         Log.e("AAA", "CREATE");
         super.onCreate();
-
-        WifiManager wifiManager =
-                (WifiManager) this.getSystemService(Context.WIFI_SERVICE);
-        if (wifiManager.getWifiState() == WIFI_STATE_ENABLED) {
-            Log.e("AAA", "WiFi Enabled");
-            dz5Activity.imageView.setBackground(getDrawable(R.drawable.wifion));
-        } else if (wifiManager.getWifiState() == WIFI_STATE_DISABLED) {
-            Log.e("AAA", "WiFi Disabled");
-            dz5Activity.imageView.setBackground(getDrawable(R.drawable.wifioff));
-        }
-
-        listenerOn = new BroadcastReceiver() {
-            @Override
-            public void onReceive(Context context, Intent intent) {
-                dz5Activity.imageView.setBackground(getDrawable(R.drawable.wifion));
-            }
-        };
-        listenerOff = new BroadcastReceiver() {
-            @Override
-            public void onReceive(Context context, Intent intent) {
-                dz5Activity.imageView.setBackground(getDrawable(R.drawable.wifioff));
-            }
-        };
+        checkAndSendState();
     }
 
     @Nullable
     @Override
     public IBinder onBind(Intent intent) {
-        localBroadcastManager = LocalBroadcastManager.getInstance(this);
-        IntentFilter myFilterOn = new IntentFilter("WIFI_IS_ENABLED_NOW");
-        IntentFilter myFilterOff = new IntentFilter("WIFI_IS_DISABLED_NOW");
-        localBroadcastManager.registerReceiver(listenerOn,myFilterOn);
-        localBroadcastManager.registerReceiver(listenerOff,myFilterOff);
+
+        globalReceiver = new BroadcastReceiver() {
+            @Override
+            public void onReceive(Context context, Intent intent) {
+                checkAndSendState();
+            }
+        };
+        registerReceiver(globalReceiver, new IntentFilter("android.net.wifi.WIFI_STATE_CHANGED"));
+        registerReceiver(globalReceiver, new IntentFilter("android.net.wifi.STATE_CHANGE"));
+
         Log.e("AAA", "BIND");
         return new Binder();
     }
@@ -71,22 +50,20 @@ public class MyService extends Service {
     @Override
     public boolean onUnbind(Intent intent) {
         Log.e("AAA", "UNBIND");
-        localBroadcastManager = LocalBroadcastManager.getInstance(this);
-        localBroadcastManager.unregisterReceiver(listenerOn);
-        localBroadcastManager.unregisterReceiver(listenerOff);
+        unregisterReceiver(globalReceiver);
         return super.onUnbind(intent);
     }
 
-    @Override
-    public void onRebind(Intent intent) {
-        Log.e("AAA", "REBIND");
-        super.onRebind(intent);
+    public void checkAndSendState() {
+        LocalBroadcastManager localBroadcastManager = LocalBroadcastManager.getInstance(this);
+        WifiManager wifiManager =
+                (WifiManager) this.getSystemService(Context.WIFI_SERVICE);
+        if (wifiManager.getWifiState() == WifiManager.WIFI_STATE_ENABLED) {
+            Log.e("AAA", "WiFi Enabled");
+            localBroadcastManager.sendBroadcast(on);
+        } else if (wifiManager.getWifiState() == WifiManager.WIFI_STATE_DISABLED) {
+            Log.e("AAA", "WiFi Disabled");
+            localBroadcastManager.sendBroadcast(off);
+        }
     }
-
-    public int onStartCommand(Intent intent, int flags, int startId) {
-        Log.d("AAA", "START");
-        return super.onStartCommand(intent, flags, startId);
-
-    }
-
 }

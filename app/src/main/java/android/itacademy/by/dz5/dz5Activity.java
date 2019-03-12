@@ -1,26 +1,28 @@
 package android.itacademy.by.dz5;
 
 import android.app.Activity;
+import android.content.BroadcastReceiver;
 import android.content.ComponentName;
+import android.content.Context;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.content.ServiceConnection;
 import android.itacademy.by.menu.R;
-import android.net.wifi.WifiManager;
 import android.os.Bundle;
 import android.os.IBinder;
 import android.support.annotation.Nullable;
+import android.support.v4.content.LocalBroadcastManager;
 import android.util.Log;
-import android.view.View;
-import android.widget.Button;
 import android.widget.ImageView;
-import android.widget.Switch;
 
-public class dz5Activity extends Activity implements View.OnClickListener {
+public class dz5Activity extends Activity {
     private ServiceConnection sConn;
     private Intent intent;
     public static ImageView imageView;
-    private Button wifiBtnOn;
-    private Button wifiBtnOff;
+    private Intent on = new Intent("WIFI_IS_ENABLED_NOW");
+    private Intent off = new Intent("WIFI_IS_DISABLED_NOW");
+
+
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -28,10 +30,7 @@ public class dz5Activity extends Activity implements View.OnClickListener {
         setContentView(R.layout.services_layout);
 
         imageView = findViewById(R.id.wifiImageView);
-        wifiBtnOn = findViewById(R.id.turnWifiBtnOn);
-        wifiBtnOff = findViewById(R.id.turnWifiBtnOff);
-        wifiBtnOn.setOnClickListener(this);
-        wifiBtnOff.setOnClickListener(this);
+
 
         sConn = new ServiceConnection() {
             @Override
@@ -47,6 +46,20 @@ public class dz5Activity extends Activity implements View.OnClickListener {
         intent = new Intent(this, MyService.class);
         intent.setPackage("android.itacademy.by");
         bindService(intent, sConn, BIND_AUTO_CREATE);
+        LocalBroadcastManager localBroadcastManager = LocalBroadcastManager.getInstance(this);
+        localBroadcastManager.registerReceiver(new BroadcastReceiver() {
+            @Override
+            public void onReceive(Context context, Intent intent) {
+                dz5Activity.imageView.setBackground(getDrawable(R.drawable.wifion));
+            }
+        },new IntentFilter("WIFI_IS_ENABLED_NOW"));
+        localBroadcastManager.registerReceiver(new BroadcastReceiver() {
+            @Override
+            public void onReceive(Context context, Intent intent) {
+                dz5Activity.imageView.setBackground(getDrawable(R.drawable.wifioff));
+            }
+        },new IntentFilter("WIFI_IS_DISABLED_NOW"));
+
     }
 
     @Override
@@ -63,16 +76,6 @@ public class dz5Activity extends Activity implements View.OnClickListener {
         Log.e("AAA", "RESUME");
     }
 
-    @Override
-    public void onClick(View v) {
-        WifiManager wifiManager = (WifiManager) this.getSystemService(WIFI_SERVICE);
 
-        switch (v.getId()) {
-            case R.id.turnWifiBtnOn:
-                wifiManager.setWifiEnabled(true);
-                break;
-            case R.id.turnWifiBtnOff:
-                wifiManager.setWifiEnabled(false);
-        }
-    }
+
 }

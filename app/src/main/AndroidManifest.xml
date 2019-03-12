@@ -17,13 +17,6 @@
             </intent-filter>
         </service>
 
-        <receiver android:name="android.itacademy.by.dz5.WifiGlobalReceiver">
-            <intent-filter>
-                <action android:name="android.net.wifi.WIFI_STATE_CHANGED" />
-                <action android:name="android.net.wifi.STATE_CHANGE" />
-            </intent-filter>
-        </receiver>
-
         <activity android:name="android.itacademy.by.menu.MenuActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
