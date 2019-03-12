@@ -21,7 +21,8 @@ public class dz5Activity extends Activity {
     public static ImageView imageView;
     private Intent on = new Intent("WIFI_IS_ENABLED_NOW");
     private Intent off = new Intent("WIFI_IS_DISABLED_NOW");
-
+    private BroadcastReceiver onReceiver;
+    private BroadcastReceiver offReceiver;
 
 
     @Override
@@ -46,25 +47,31 @@ public class dz5Activity extends Activity {
         intent = new Intent(this, MyService.class);
         intent.setPackage("android.itacademy.by");
         bindService(intent, sConn, BIND_AUTO_CREATE);
+
         LocalBroadcastManager localBroadcastManager = LocalBroadcastManager.getInstance(this);
-        localBroadcastManager.registerReceiver(new BroadcastReceiver() {
+
+        onReceiver = new BroadcastReceiver() {
             @Override
             public void onReceive(Context context, Intent intent) {
                 dz5Activity.imageView.setBackground(getDrawable(R.drawable.wifion));
             }
-        },new IntentFilter("WIFI_IS_ENABLED_NOW"));
-        localBroadcastManager.registerReceiver(new BroadcastReceiver() {
+        };
+        offReceiver = new BroadcastReceiver() {
             @Override
             public void onReceive(Context context, Intent intent) {
                 dz5Activity.imageView.setBackground(getDrawable(R.drawable.wifioff));
             }
-        },new IntentFilter("WIFI_IS_DISABLED_NOW"));
+        };
 
+        localBroadcastManager.registerReceiver(onReceiver, new IntentFilter("WIFI_IS_ENABLED_NOW"));
+        localBroadcastManager.registerReceiver(offReceiver, new IntentFilter("WIFI_IS_DISABLED_NOW"));
     }
 
     @Override
     protected void onPause() {
         unbindService(sConn);
+        unregisterReceiver(onReceiver);
+        unregisterReceiver(offReceiver);
         super.onPause();
         Log.e("AAA", "PAUSE");
     }
@@ -75,7 +82,4 @@ public class dz5Activity extends Activity {
         bindService(intent, sConn, BIND_AUTO_CREATE);
         Log.e("AAA", "RESUME");
     }
-
-
-
 }
