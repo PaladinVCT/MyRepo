@@ -31,7 +31,7 @@ public class dz6Activity extends Activity implements View.OnClickListener {
 
         fab = findViewById(R.id.fab);
         fab.setOnClickListener(this);
-        fab.setAlpha(0.5f);
+        fab.setAlpha(0.6f);
         rView = findViewById(R.id.recyclerDz6);
         rView.setHasFixedSize(true);
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
