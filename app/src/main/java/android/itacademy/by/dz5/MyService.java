@@ -21,7 +21,6 @@ public class MyService extends Service {
     public void onCreate() {
         Log.e("AAA", "CREATE");
         super.onCreate();
-        checkAndSendState();
     }
 
     @Nullable
@@ -38,7 +37,7 @@ public class MyService extends Service {
         registerReceiver(globalReceiver, new IntentFilter("android.net.wifi.STATE_CHANGE"));
 
         Log.e("AAA", "BIND");
-        return new Binder();
+        return new MyBinder();
     }
 
     @Override
@@ -64,6 +63,17 @@ public class MyService extends Service {
         } else if (wifiManager.getWifiState() == WifiManager.WIFI_STATE_DISABLED) {
             Log.e("AAA", "WiFi Disabled");
             localBroadcastManager.sendBroadcast(off);
+        }
+    }
+
+    @Override
+    public int onStartCommand(Intent intent, int flags, int startId) {
+        return super.onStartCommand(intent, flags, startId);
+    }
+
+    class MyBinder extends Binder {
+        public MyService getService() {
+            return MyService.this;
         }
     }
 }

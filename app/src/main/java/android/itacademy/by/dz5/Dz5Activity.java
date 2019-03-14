@@ -1,6 +1,7 @@
 package android.itacademy.by.dz5;
 
 import android.app.Activity;
+import android.app.ActivityManager;
 import android.content.BroadcastReceiver;
 import android.content.ComponentName;
 import android.content.Context;
@@ -15,7 +16,7 @@ import android.support.v4.content.LocalBroadcastManager;
 import android.util.Log;
 import android.widget.ImageView;
 
-public class dz5Activity extends Activity {
+public class Dz5Activity extends Activity {
     private ServiceConnection sConn;
     private Intent intent;
     public static ImageView imageView;
@@ -23,7 +24,7 @@ public class dz5Activity extends Activity {
     private Intent off = new Intent("WIFI_IS_DISABLED_NOW");
     private BroadcastReceiver onReceiver;
     private BroadcastReceiver offReceiver;
-
+    private MyService myService;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -37,6 +38,8 @@ public class dz5Activity extends Activity {
             @Override
             public void onServiceConnected(ComponentName name, IBinder service) {
                 Log.e("AAA", "connected");
+                myService = ((MyService.MyBinder) service).getService();
+                myService.checkAndSendState();
             }
 
             @Override
@@ -44,22 +47,23 @@ public class dz5Activity extends Activity {
                 Log.e("AAA", "disconnected");
             }
         };
+
         intent = new Intent(this, MyService.class);
         intent.setPackage("android.itacademy.by");
-        bindService(intent, sConn, BIND_AUTO_CREATE);
 
+        bindService(intent, sConn, BIND_AUTO_CREATE);
         LocalBroadcastManager localBroadcastManager = LocalBroadcastManager.getInstance(this);
 
         onReceiver = new BroadcastReceiver() {
             @Override
             public void onReceive(Context context, Intent intent) {
-                dz5Activity.imageView.setBackground(getDrawable(R.drawable.wifion));
+                Dz5Activity.imageView.setBackground(getDrawable(R.drawable.wifion));
             }
         };
         offReceiver = new BroadcastReceiver() {
             @Override
             public void onReceive(Context context, Intent intent) {
-                dz5Activity.imageView.setBackground(getDrawable(R.drawable.wifioff));
+                Dz5Activity.imageView.setBackground(getDrawable(R.drawable.wifioff));
             }
         };
 
@@ -70,8 +74,6 @@ public class dz5Activity extends Activity {
     @Override
     protected void onPause() {
         unbindService(sConn);
-        unregisterReceiver(onReceiver);
-        unregisterReceiver(offReceiver);
         super.onPause();
         Log.e("AAA", "PAUSE");
     }
@@ -82,4 +84,5 @@ public class dz5Activity extends Activity {
         bindService(intent, sConn, BIND_AUTO_CREATE);
         Log.e("AAA", "RESUME");
     }
+
 }

@@ -45,7 +45,7 @@
         </activity>
         <activity android:name="android.itacademy.by.dz4.SovaActivity" />
 
-        <activity android:name="android.itacademy.by.dz5.dz5Activity" />
+        <activity android:name="android.itacademy.by.dz5.Dz5Activity" />
 
     </application>
 
