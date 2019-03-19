@@ -10,7 +10,6 @@ import android.os.Binder;
 import android.os.IBinder;
 import android.support.annotation.Nullable;
 import android.support.v4.content.LocalBroadcastManager;
-import android.util.Log;
 
 public class MyService extends Service {
     private BroadcastReceiver globalReceiver;
@@ -19,36 +18,30 @@ public class MyService extends Service {
 
     @Override
     public void onCreate() {
-        Log.e("AAA", "CREATE");
-        super.onCreate();
-    }
-
-    @Nullable
-    @Override
-    public IBinder onBind(Intent intent) {
-
         globalReceiver = new BroadcastReceiver() {
             @Override
             public void onReceive(Context context, Intent intent) {
                 checkAndSendState();
             }
         };
+        super.onCreate();
+    }
+
+    @Nullable
+    @Override
+    public IBinder onBind(Intent intent) {
         registerReceiver(globalReceiver, new IntentFilter("android.net.wifi.WIFI_STATE_CHANGED"));
         registerReceiver(globalReceiver, new IntentFilter("android.net.wifi.STATE_CHANGE"));
-
-        Log.e("AAA", "BIND");
         return new MyBinder();
     }
 
     @Override
     public void onDestroy() {
-        Log.e("AAA", "DESTROY");
         super.onDestroy();
     }
 
     @Override
     public boolean onUnbind(Intent intent) {
-        Log.e("AAA", "UNBIND");
         unregisterReceiver(globalReceiver);
         return super.onUnbind(intent);
     }
@@ -58,10 +51,8 @@ public class MyService extends Service {
         WifiManager wifiManager =
                 (WifiManager) this.getSystemService(Context.WIFI_SERVICE);
         if (wifiManager.getWifiState() == WifiManager.WIFI_STATE_ENABLED) {
-            Log.e("AAA", "WiFi Enabled");
             localBroadcastManager.sendBroadcast(on);
         } else if (wifiManager.getWifiState() == WifiManager.WIFI_STATE_DISABLED) {
-            Log.e("AAA", "WiFi Disabled");
             localBroadcastManager.sendBroadcast(off);
         }
     }

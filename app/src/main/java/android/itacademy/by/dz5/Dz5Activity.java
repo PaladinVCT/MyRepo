@@ -37,7 +37,6 @@ public class Dz5Activity extends Activity {
         sConn = new ServiceConnection() {
             @Override
             public void onServiceConnected(ComponentName name, IBinder service) {
-                Log.e("AAA", "connected");
                 myService = ((MyService.MyBinder) service).getService();
                 myService.checkAndSendState();
             }
@@ -74,15 +73,16 @@ public class Dz5Activity extends Activity {
     @Override
     protected void onPause() {
         unbindService(sConn);
+        unregisterReceiver(onReceiver);
+        unregisterReceiver(offReceiver);
         super.onPause();
-        Log.e("AAA", "PAUSE");
     }
 
     @Override
     protected void onResume() {
         super.onResume();
         bindService(intent, sConn, BIND_AUTO_CREATE);
-        Log.e("AAA", "RESUME");
+        registerReceiver(onReceiver, new IntentFilter("WIFI_IS_ENABLED_NOW"));
+        registerReceiver(offReceiver, new IntentFilter("WIFI_IS_DISABLED_NOW"));
     }
-
 }
