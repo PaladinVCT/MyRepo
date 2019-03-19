@@ -26,7 +26,7 @@ public class StudentAdapter extends RecyclerView.Adapter<StudentViewHolder> {
                 intent.putExtra("NAME", Catalogue.getInstance().getStudent(holder.getAdapterPosition()).getFirstName());
                 intent.putExtra("LASTNAME", Catalogue.getInstance().getStudent(holder.getAdapterPosition()).getLastName());
                 intent.putExtra("PHOTO", Catalogue.getInstance().getStudent(holder.getAdapterPosition()).getTextUrl());
-                intent.putExtra("NUMBER", holder.getAdapterPosition());
+                intent.putExtra("ID", holder.getAdapterPosition());
                 v.getContext().startActivity((intent));
 
             }
@@ -35,8 +35,8 @@ public class StudentAdapter extends RecyclerView.Adapter<StudentViewHolder> {
     }
 
     @Override
-    public void onBindViewHolder(@NonNull StudentViewHolder studentViewHolder, int i) {
-        studentViewHolder.bind(Catalogue.getInstance().getStudent(i));
+    public void onBindViewHolder(@NonNull StudentViewHolder studentViewHolder, int Id) {
+        studentViewHolder.bind(Catalogue.getInstance().getStudent(Id));
 
     }
 

@@ -61,7 +61,7 @@
         <activity android:name="android.itacademy.by.dz5.dz5Activity" />
         <activity android:name="android.itacademy.by.cw6.cw6Activity" />
         <activity
-            android:name="android.itacademy.by.dz6.dz6Activity"
+            android:name="android.itacademy.by.dz6.Dz6Activity"
             android:screenOrientation="portrait" />
         <activity android:name="android.itacademy.by.dz6.EditStudentActivity" />
         <activity android:name="android.itacademy.by.dz6.CreateStudentActivity" />

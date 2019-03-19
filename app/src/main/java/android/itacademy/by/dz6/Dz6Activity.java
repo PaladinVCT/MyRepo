@@ -17,7 +17,7 @@ import android.widget.EditText;
 import java.util.ArrayList;
 import java.util.List;
 
-public class dz6Activity extends Activity implements View.OnClickListener {
+public class Dz6Activity extends Activity implements View.OnClickListener {
     private RecyclerView rView;
     private StudentAdapter adapter = new StudentAdapter();
     private FloatingActionButton fab;
@@ -39,6 +39,7 @@ public class dz6Activity extends Activity implements View.OnClickListener {
         rView.setAdapter(adapter);
         overridePendingTransition(R.anim.entering, R.anim.exiting);
 
+        //доделать
         search = findViewById(R.id.editTextSearch);
         search.addTextChangedListener(new TextWatcher() {
             @Override
@@ -62,6 +63,7 @@ public class dz6Activity extends Activity implements View.OnClickListener {
         }
     }
 
+    //доделать
     private void filter(String text) {
         ArrayList<Student> filteredList = new ArrayList<>();
         ArrayList<Student> originalList = new ArrayList<>();

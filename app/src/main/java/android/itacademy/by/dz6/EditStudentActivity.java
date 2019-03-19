@@ -16,7 +16,7 @@ public class EditStudentActivity extends Activity implements View.OnClickListene
     private ImageView editPhoto;
     private Button saveButton;
     private Button deleteButton;
-    private int studentNumber;
+    private int id;
 
 
     @Override
@@ -33,7 +33,7 @@ public class EditStudentActivity extends Activity implements View.OnClickListene
 
         Intent intent = getIntent();
 
-        studentNumber = intent.getIntExtra("NUMBER",0);
+        id = intent.getIntExtra("ID",0);
         editName.setText(intent.getStringExtra("NAME"));
         editLastname.setText(intent.getStringExtra("LASTNAME"));
         ImageLoaderUtil.loadImage(editPhoto, intent.getStringExtra("PHOTO"));
@@ -50,13 +50,13 @@ public class EditStudentActivity extends Activity implements View.OnClickListene
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.studentSaveButton: {
-                Catalogue.getInstance().getStudent(studentNumber).setFirstName(editName.getText().toString());
-                Catalogue.getInstance().getStudent(studentNumber).setLastName(editLastname.getText().toString());
+                Catalogue.getInstance().getStudent(id).setFirstName(editName.getText().toString());
+                Catalogue.getInstance().getStudent(id).setLastName(editLastname.getText().toString());
                 onBackPressed();
                 break;
             }
             case R.id.studentDeleteButton: {
-                Catalogue.getInstance().deleteStudent(studentNumber);
+                Catalogue.getInstance().deleteStudent(id);
                 onBackPressed();
                 break;
             }
