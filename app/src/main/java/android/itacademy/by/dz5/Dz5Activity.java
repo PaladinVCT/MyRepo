@@ -15,7 +15,7 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.Switch;
 
-public class dz5Activity extends Activity implements View.OnClickListener {
+public class Dz5Activity extends Activity implements View.OnClickListener {
     private ServiceConnection sConn;
     private Intent intent;
     public static ImageView imageView;

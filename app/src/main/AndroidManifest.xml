@@ -58,7 +58,7 @@
             android:name="android.itacademy.by.dz4.SovaActivity"
             android:screenOrientation="portrait" />
 
-        <activity android:name="android.itacademy.by.dz5.dz5Activity" />
+        <activity android:name="android.itacademy.by.dz5.Dz5Activity" />
         <activity android:name="android.itacademy.by.cw6.cw6Activity" />
         <activity
             android:name="android.itacademy.by.dz6.Dz6Activity"

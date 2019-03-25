@@ -30,22 +30,22 @@ public class MyService extends Service {
                 (WifiManager) this.getSystemService(Context.WIFI_SERVICE);
         if (wifiManager.getWifiState() == WIFI_STATE_ENABLED) {
             Log.e("AAA", "WiFi Enabled");
-            dz5Activity.imageView.setBackground(getDrawable(R.drawable.wifion));
+            Dz5Activity.imageView.setBackground(getDrawable(R.drawable.wifion));
         } else if (wifiManager.getWifiState() == WIFI_STATE_DISABLED) {
             Log.e("AAA", "WiFi Disabled");
-            dz5Activity.imageView.setBackground(getDrawable(R.drawable.wifioff));
+            Dz5Activity.imageView.setBackground(getDrawable(R.drawable.wifioff));
         }
 
         listenerOn = new BroadcastReceiver() {
             @Override
             public void onReceive(Context context, Intent intent) {
-                dz5Activity.imageView.setBackground(getDrawable(R.drawable.wifion));
+                Dz5Activity.imageView.setBackground(getDrawable(R.drawable.wifion));
             }
         };
         listenerOff = new BroadcastReceiver() {
             @Override
             public void onReceive(Context context, Intent intent) {
-                dz5Activity.imageView.setBackground(getDrawable(R.drawable.wifioff));
+                Dz5Activity.imageView.setBackground(getDrawable(R.drawable.wifioff));
             }
         };
     }
