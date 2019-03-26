@@ -1,6 +1,8 @@
-package android.itacademy.by.dz6;
+package android.itacademy.by.dz6.activities;
 
 import android.app.Activity;
+import android.itacademy.by.dz6.student.Catalogue;
+import android.itacademy.by.dz6.student.Student;
 import android.itacademy.by.menu.R;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -8,7 +10,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
-public class CreateStudentActivity extends Activity implements View.OnClickListener {
+public class CreateActivity extends Activity implements View.OnClickListener {
     private EditText photo;
     private EditText firstName;
     private EditText lastName;

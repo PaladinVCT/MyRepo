@@ -1,6 +1,8 @@
-package android.itacademy.by.dz6;
+package android.itacademy.by.dz6.recycle;
 
-import android.content.Intent;
+import android.content.Context;
+import android.itacademy.by.dz6.student.Catalogue;
+import android.itacademy.by.dz6.student.Student;
 import android.itacademy.by.menu.R;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
@@ -11,7 +13,23 @@ import android.view.ViewGroup;
 import java.util.ArrayList;
 
 public class StudentAdapter extends RecyclerView.Adapter<StudentViewHolder> {
+    private Context context;
 
+    public StudentAdapter(Context context) {
+        this.context = context;
+    }
+
+    public interface onItemClickListener {
+        public void onItemClick(int id, String name, String lastName, String photoUrl);
+    }
+
+    onItemClickListener mainActivityListener;
+
+    @Override
+    public void onAttachedToRecyclerView(@NonNull RecyclerView recyclerView) {
+        super.onAttachedToRecyclerView(recyclerView);
+        mainActivityListener = (onItemClickListener) context;
+    }
 
     @NonNull
     @Override
@@ -22,12 +40,11 @@ public class StudentAdapter extends RecyclerView.Adapter<StudentViewHolder> {
         view.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(viewGroup.getContext(), EditStudentActivity.class);
-                intent.putExtra("NAME", Catalogue.getInstance().getStudent(holder.getAdapterPosition()).getFirstName());
-                intent.putExtra("LASTNAME", Catalogue.getInstance().getStudent(holder.getAdapterPosition()).getLastName());
-                intent.putExtra("PHOTO", Catalogue.getInstance().getStudent(holder.getAdapterPosition()).getTextUrl());
-                intent.putExtra("ID", holder.getAdapterPosition());
-                v.getContext().startActivity((intent));
+                mainActivityListener.onItemClick(holder.getAdapterPosition(),
+                        Catalogue.getInstance().getStudent(holder.getAdapterPosition()).getFirstName(),
+                        Catalogue.getInstance().getStudent(holder.getAdapterPosition()).getLastName(),
+                        Catalogue.getInstance().getStudent(holder.getAdapterPosition()).getTextUrl());
+
 
             }
         });

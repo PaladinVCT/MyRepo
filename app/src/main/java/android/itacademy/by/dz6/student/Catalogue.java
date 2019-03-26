@@ -1,4 +1,4 @@
-package android.itacademy.by.dz6;
+package android.itacademy.by.dz6.student;
 
 import java.util.ArrayList;
 import java.util.List;

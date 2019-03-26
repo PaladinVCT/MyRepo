@@ -1,4 +1,4 @@
-package android.itacademy.by.dz6;
+package android.itacademy.by.dz6.student;
 
 public class Student {
     private String firstName;

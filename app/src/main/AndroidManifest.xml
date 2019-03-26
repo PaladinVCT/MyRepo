@@ -59,12 +59,9 @@
             android:screenOrientation="portrait" />
 
         <activity android:name="android.itacademy.by.dz5.Dz5Activity" />
-        <activity android:name="android.itacademy.by.cw6.cw6Activity" />
-        <activity
-            android:name="android.itacademy.by.dz6.Dz6Activity"
-            android:screenOrientation="portrait" />
-        <activity android:name="android.itacademy.by.dz6.EditStudentActivity" />
-        <activity android:name="android.itacademy.by.dz6.CreateStudentActivity" />
+        <activity android:name="android.itacademy.by.dz6.activities.MainActivity" />
+        <activity android:name="android.itacademy.by.dz6.activities.DetailsActivity" />
+        <activity android:name="android.itacademy.by.dz6.activities.CreateActivity" />
     </application>
 
     <uses-permission android:name="android.permission.INTERNET" />

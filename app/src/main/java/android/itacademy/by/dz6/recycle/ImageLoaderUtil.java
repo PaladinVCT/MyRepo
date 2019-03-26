@@ -1,4 +1,4 @@
-package android.itacademy.by.dz6;
+package android.itacademy.by.dz6.recycle;
 
 import android.widget.ImageView;
 
