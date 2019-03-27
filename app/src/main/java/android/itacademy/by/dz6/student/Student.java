@@ -12,6 +12,13 @@ public class Student {
         this.textUrl = textUrl;
     }
 
+    public Student(int id, String firstName, String lastName, String textUrl) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.textUrl = textUrl;
+        Id = id;
+    }
+
     public void setLastName(String lastName) {
         this.lastName = lastName;
     }

@@ -23,18 +23,6 @@ public class DetailsFragment extends Fragment {
     private Button deleteButton;
     private int id;
 
-//    public static DetailsFragment newInstance(int id, String name, String lastName, String photoUrl) {
-//        DetailsFragment detailsFragment = new DetailsFragment();
-//        Bundle args = new Bundle();
-//        args.putInt("ID", id);
-//        args.putString("NAME", name);
-//        args.putString("LASTNAME", lastName);
-//        args.putString("PHOTO", photoUrl);
-//        detailsFragment.setArguments(args);
-//        return detailsFragment;
-//    }
-
-
     public interface onSavePressed {
         public void saveAndExit(int id, String name, String lastName);
     }

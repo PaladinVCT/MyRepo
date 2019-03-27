@@ -19,7 +19,7 @@ public class CreateActivity extends Activity implements View.OnClickListener {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.add_student_layout);
+        setContentView(R.layout.create_student_layout);
         photo = findViewById(R.id.createStudentPhoto);
         firstName = findViewById(R.id.createStudentName);
         lastName = findViewById(R.id.createStudentLastname);
