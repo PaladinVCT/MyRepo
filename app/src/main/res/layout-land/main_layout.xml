@@ -15,6 +15,7 @@
         android:id="@+id/fragmentDetails"
         android:layout_width="0px"
         android:layout_height="match_parent"
+        android:background="@color/grey_background"
         android:layout_weight="1">
 
     </FrameLayout>

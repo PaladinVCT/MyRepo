@@ -3,6 +3,7 @@ package android.itacademy.by.dz6.activities;
 import android.content.Intent;
 import android.itacademy.by.dz6.fragments.DetailsFragment;
 import android.itacademy.by.dz6.student.Catalogue;
+import android.itacademy.by.dz6.student.Student;
 import android.itacademy.by.menu.R;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -10,8 +11,7 @@ import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 
 public class DetailsActivity extends AppCompatActivity
-        implements DetailsFragment.onSavePressed, DetailsFragment.onDeletePressed,
-        DetailsFragment.onDataInitialize {
+        implements DetailsFragment.DetailsActions {
     private Intent intent;
 
     @Override
@@ -51,10 +51,8 @@ public class DetailsActivity extends AppCompatActivity
     public void initializeData() {
         DetailsFragment detailsFragment = (DetailsFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.detailsSinglePan);
-        assert detailsFragment != null;
-        detailsFragment.initializeData(intent.getIntExtra("ID", 0),
-                intent.getStringExtra("NAME"),
-                intent.getStringExtra("LASTNAME"),
-                intent.getStringExtra("PHOTO"));
+        if (detailsFragment != null) {
+            detailsFragment.initializeData(intent.getIntExtra("ID", 0));
+        }
     }
 }

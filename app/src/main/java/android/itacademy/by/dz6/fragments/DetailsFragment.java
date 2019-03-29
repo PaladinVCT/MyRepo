@@ -2,6 +2,8 @@ package android.itacademy.by.dz6.fragments;
 
 import android.content.Context;
 import android.itacademy.by.dz6.recycle.ImageLoaderUtil;
+import android.itacademy.by.dz6.student.Catalogue;
+import android.itacademy.by.dz6.student.Student;
 import android.itacademy.by.menu.R;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -23,35 +25,26 @@ public class DetailsFragment extends Fragment {
     private Button deleteButton;
     private int id;
 
-    public interface onSavePressed {
-        public void saveAndExit(int id, String name, String lastName);
+    public interface DetailsActions {
+        void initializeData();
+
+        void deleteAndExit(int id);
+
+        void saveAndExit(int id, String name, String lastName);
     }
 
-    public interface onDeletePressed {
-        public void deleteAndExit(int id);
-    }
-
-    public interface onDataInitialize{
-        public void initializeData();
-    }
-
-    onSavePressed onSaveActivityListener;
-    onDeletePressed onDeleteActivityListener;
-    onDataInitialize onDataInitializeListener;
+    DetailsActions ActivityListener;
 
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
-        onSaveActivityListener = (onSavePressed) context;
-        onDeleteActivityListener = (onDeletePressed) context;
-        onDataInitializeListener = (onDataInitialize)context;
+        ActivityListener = (DetailsActions) context;
     }
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.details_layout, container, false);
-        return view;
+        return inflater.inflate(R.layout.details_layout, container, false);
     }
 
     @Override
@@ -67,26 +60,25 @@ public class DetailsFragment extends Fragment {
         saveButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                onSaveActivityListener
+                ActivityListener
                         .saveAndExit(id, editName.getText().toString(), editLastname.getText().toString());
             }
         });
         deleteButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                onDeleteActivityListener.deleteAndExit(id);
+                ActivityListener.deleteAndExit(id);
             }
         });
 
-        onDataInitializeListener.initializeData();
+        ActivityListener.initializeData();
     }
 
-    public void initializeData(int id, String name, String lastName, String photoUrl) {
+    public void initializeData(int id) {
         this.id = id;
-        editName.setText(name);
-        editLastname.setText(lastName);
-        ImageLoaderUtil.loadImage(editPhoto, photoUrl);
-
+        Student student = Catalogue.getInstance().getStudent(id);
+        editName.setText(student.getFirstName());
+        editLastname.setText(student.getLastName());
+        ImageLoaderUtil.loadImage(editPhoto, student.getTextUrl());
     }
-
 }

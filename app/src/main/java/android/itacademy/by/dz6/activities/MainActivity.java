@@ -16,12 +16,10 @@ import android.view.View;
 public class MainActivity extends AppCompatActivity
         implements RecycleFragment.OnAddClickListener,
         StudentAdapter.onItemClickListener,
-        DetailsFragment.onDataInitialize,
-        DetailsFragment.onSavePressed,
-        DetailsFragment.onDeletePressed {
+        DetailsFragment.DetailsActions {
 
     private boolean dualPan;
-    private Student detailsStudent;
+    private int id;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -31,7 +29,6 @@ public class MainActivity extends AppCompatActivity
         if (detailsFrame != null) {
             dualPan = true;
         }
-
     }
 
     @Override
@@ -41,22 +38,19 @@ public class MainActivity extends AppCompatActivity
     }
 
     @Override
-    public void onItemClick(int id, String name, String lastName, String photoUrl) {
+    public void onItemClick(int id) {
 
         if (dualPan) {
 
             DetailsFragment detailsFragment = new DetailsFragment();
             FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
-            ft.add(R.id.fragmentDetails, detailsFragment);
+            ft.replace(R.id.fragmentDetails, detailsFragment);
             ft.commit();
-            detailsStudent = putDetailsStudent(id, name, lastName, photoUrl);
+            this.id = id;
 
         } else {
 
             Intent intent = new Intent(this, DetailsActivity.class);
-            intent.putExtra("NAME", name);
-            intent.putExtra("LASTNAME", lastName);
-            intent.putExtra("PHOTO", photoUrl);
             intent.putExtra("ID", id);
             startActivity(intent);
         }
@@ -71,15 +65,9 @@ public class MainActivity extends AppCompatActivity
     @Override
     public void initializeData() {
         DetailsFragment detailsFragment = (DetailsFragment) getSupportFragmentManager().findFragmentById(R.id.fragmentDetails);
-        assert detailsFragment != null;
-        detailsFragment.initializeData(detailsStudent.getId(),
-                detailsStudent.getFirstName(),
-                detailsStudent.getLastName(),
-                detailsStudent.getTextUrl());
-    }
-
-    public Student putDetailsStudent(int id, String name, String lastName, String photoUrl) {
-        return new Student(id, name, lastName, photoUrl);
+        if (detailsFragment != null) {
+            detailsFragment.initializeData(id);
+        }
     }
 
     @Override
@@ -107,8 +95,15 @@ public class MainActivity extends AppCompatActivity
     public void removeDetailsFragment() {
         DetailsFragment detailsFragment = (DetailsFragment) getSupportFragmentManager().findFragmentById(R.id.fragmentDetails);
         FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
-        assert detailsFragment != null;
-        ft.remove(detailsFragment);
-        ft.commit();
+        if (detailsFragment != null) {
+            ft.remove(detailsFragment);
+            ft.commit();
+        }
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        removeDetailsFragment();
     }
 }

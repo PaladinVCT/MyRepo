@@ -43,10 +43,6 @@ public class Student {
         return Id;
     }
 
-    public void setTextUrl(String textUrl) {
-        this.textUrl = textUrl;
-    }
-
     public String getTextUrl() {
         return textUrl;
     }

@@ -13,6 +13,7 @@ import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.text.Editable;
+import android.text.TextUtils;
 import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -26,9 +27,10 @@ public class RecycleFragment extends Fragment {
 
     boolean dualPane;
     private StudentAdapter adapter;
+    private List<Student> catalogueCopy;
 
     public interface OnAddClickListener {
-        public void startCreateActivity();
+        void startCreateActivity();
     }
 
     OnAddClickListener mainActivityListener;
@@ -42,15 +44,14 @@ public class RecycleFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.recycle_layout, container, false);
-        return view;
+        return inflater.inflate(R.layout.recycle_layout, container, false);
     }
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        List<Student> catalogueCopy = new ArrayList<>();
+        catalogueCopy = new ArrayList<>();
         adapter = new StudentAdapter(view.getContext());
 
         FloatingActionButton fab = view.findViewById(R.id.fab);
@@ -81,7 +82,7 @@ public class RecycleFragment extends Fragment {
 
             @Override
             public void afterTextChanged(Editable s) {
-//                filter(s.toString());
+                filter(s.toString());
             }
         });
 
@@ -89,48 +90,26 @@ public class RecycleFragment extends Fragment {
             catalogueCopy.add(Catalogue.getInstance().getStudent(i));
         }
     }
-    public StudentAdapter getAdapter(){
+
+    public StudentAdapter getAdapter() {
         return adapter;
     }
+
+
+    private void filter(String text) {
+        ArrayList<Student> filteredList = new ArrayList<>();
+        ArrayList<Student> originalList = new ArrayList<>();
+        for (int i = 0; i < Catalogue.getInstance().countStudents(); i++) {
+            originalList.add(Catalogue.getInstance().getStudent(i));
+        }
+        if (!TextUtils.isEmpty(text)) {
+            for (Student student : originalList) {
+                if (student.getFirstName().toLowerCase().contains(text.toLowerCase())
+                        || student.getLastName().toLowerCase().contains(text.toLowerCase())) {
+                    filteredList.add(student);
+                }
+            }
+        } else filteredList.addAll(catalogueCopy);
+        adapter.filterList(filteredList);
+    }
 }
-
-
-//    private void filter(String text) {
-//        ArrayList<Student> filteredList = new ArrayList<>();
-//        ArrayList<Student> originalList = new ArrayList<>();
-//        for (int i = 0; i < Catalogue.getInstance().countStudents(); i++) {
-//            originalList.add(Catalogue.getInstance().getStudent(i));
-//        }
-//        if (!TextUtils.isEmpty(text)) {
-//            for (Student student : originalList) {
-//                if (student.getFirstName().toLowerCase().contains(text.toLowerCase())
-//                        || student.getLastName().toLowerCase().contains(text.toLowerCase())) {
-//                    filteredList.add(student);
-//                }
-//            }
-//        } else filteredList.addAll(catalogueCopy);
-//        adapter.filterList(filteredList);
-//
-//    }
-
-//    @Override
-//    protected void onResume() {
-//        catalogueCopy.clear();
-//
-//        for (int i = 0; i < Catalogue.getInstance().countStudents(); i++) {
-//            catalogueCopy.add(Catalogue.getInstance().getStudent(i));
-//        }
-//
-//        adapter.notifyDataSetChanged();
-//        super.onResume();
-//    }
-//
-//    @Override
-//    protected void onPause() {
-//        adapter.notifyDataSetChanged();
-//        super.onPause();
-//    }
-
-
-
-

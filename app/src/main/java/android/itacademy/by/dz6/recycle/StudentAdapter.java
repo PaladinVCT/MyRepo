@@ -20,7 +20,7 @@ public class StudentAdapter extends RecyclerView.Adapter<StudentViewHolder> {
     }
 
     public interface onItemClickListener {
-        public void onItemClick(int id, String name, String lastName, String photoUrl);
+        void onItemClick(int id);
     }
 
     onItemClickListener mainActivityListener;
@@ -34,18 +34,13 @@ public class StudentAdapter extends RecyclerView.Adapter<StudentViewHolder> {
     @NonNull
     @Override
     public StudentViewHolder onCreateViewHolder(@NonNull final ViewGroup viewGroup, int i) {
-        View view = LayoutInflater.from(viewGroup.getContext())
+        final View view = LayoutInflater.from(viewGroup.getContext())
                 .inflate(R.layout.item_student, viewGroup, false);
         final StudentViewHolder holder = new StudentViewHolder(view);
         view.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                mainActivityListener.onItemClick(holder.getAdapterPosition(),
-                        Catalogue.getInstance().getStudent(holder.getAdapterPosition()).getFirstName(),
-                        Catalogue.getInstance().getStudent(holder.getAdapterPosition()).getLastName(),
-                        Catalogue.getInstance().getStudent(holder.getAdapterPosition()).getTextUrl());
-
-
+                mainActivityListener.onItemClick(holder.getAdapterPosition());
             }
         });
         return holder;
