@@ -23,9 +23,8 @@ import android.widget.EditText;
 import java.util.ArrayList;
 import java.util.List;
 
-public class RecycleFragment extends Fragment {
+public class StudentListFragment extends Fragment {
 
-    boolean dualPane;
     private StudentAdapter adapter;
     private List<Student> catalogueCopy;
 
@@ -33,12 +32,12 @@ public class RecycleFragment extends Fragment {
         void startCreateActivity();
     }
 
-    OnAddClickListener mainActivityListener;
+    OnAddClickListener onAddClickListener;
 
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
-        mainActivityListener = (OnAddClickListener) context;
+        onAddClickListener = (OnAddClickListener) context;
     }
 
     @Nullable
@@ -58,7 +57,7 @@ public class RecycleFragment extends Fragment {
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                mainActivityListener.startCreateActivity();
+                onAddClickListener.startCreateActivity();
             }
         });
         fab.setAlpha(0.6f);

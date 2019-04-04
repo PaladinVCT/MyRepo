@@ -33,12 +33,12 @@ public class DetailsFragment extends Fragment {
         void saveAndExit(int id, String name, String lastName);
     }
 
-    DetailsActions ActivityListener;
+    private DetailsActions detailsActionsListener;
 
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
-        ActivityListener = (DetailsActions) context;
+        detailsActionsListener = (DetailsActions) context;
     }
 
     @Nullable
@@ -57,21 +57,11 @@ public class DetailsFragment extends Fragment {
         saveButton = view.findViewById(R.id.studentSaveButton);
         deleteButton = view.findViewById(R.id.studentDeleteButton);
 
-        saveButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                ActivityListener
-                        .saveAndExit(id, editName.getText().toString(), editLastname.getText().toString());
-            }
-        });
-        deleteButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                ActivityListener.deleteAndExit(id);
-            }
-        });
+        saveButton.setOnClickListener(v -> detailsActionsListener
+                .saveAndExit(id, editName.getText().toString(), editLastname.getText().toString()));
+        deleteButton.setOnClickListener(v -> detailsActionsListener.deleteAndExit(id));
 
-        ActivityListener.initializeData();
+        detailsActionsListener.initializeData();
     }
 
     public void initializeData(int id) {

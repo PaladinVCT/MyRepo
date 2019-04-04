@@ -6,7 +6,7 @@
 
     <fragment
         android:id="@+id/fragmentRecycle"
-        class="android.itacademy.by.dz6.fragments.RecycleFragment"
+        class="android.itacademy.by.dz6.fragments.StudentListFragment"
         android:layout_width="0px"
         android:layout_height="match_parent"
         android:layout_weight="1" />

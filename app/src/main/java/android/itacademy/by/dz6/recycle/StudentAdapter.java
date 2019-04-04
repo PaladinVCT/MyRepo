@@ -19,16 +19,16 @@ public class StudentAdapter extends RecyclerView.Adapter<StudentViewHolder> {
         this.context = context;
     }
 
-    public interface onItemClickListener {
+    public interface OnItemClickListener {
         void onItemClick(int id);
     }
 
-    onItemClickListener mainActivityListener;
+    private OnItemClickListener onItemClickListener;
 
     @Override
     public void onAttachedToRecyclerView(@NonNull RecyclerView recyclerView) {
         super.onAttachedToRecyclerView(recyclerView);
-        mainActivityListener = (onItemClickListener) context;
+        onItemClickListener = (OnItemClickListener) context;
     }
 
     @NonNull
@@ -37,12 +37,7 @@ public class StudentAdapter extends RecyclerView.Adapter<StudentViewHolder> {
         final View view = LayoutInflater.from(viewGroup.getContext())
                 .inflate(R.layout.item_student, viewGroup, false);
         final StudentViewHolder holder = new StudentViewHolder(view);
-        view.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                mainActivityListener.onItemClick(holder.getAdapterPosition());
-            }
-        });
+        view.setOnClickListener(v -> onItemClickListener.onItemClick(holder.getAdapterPosition()));
         return holder;
     }
 

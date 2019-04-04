@@ -2,10 +2,9 @@ package android.itacademy.by.dz6.activities;
 
 import android.content.Intent;
 import android.itacademy.by.dz6.fragments.DetailsFragment;
-import android.itacademy.by.dz6.fragments.RecycleFragment;
+import android.itacademy.by.dz6.fragments.StudentListFragment;
 import android.itacademy.by.dz6.recycle.StudentAdapter;
 import android.itacademy.by.dz6.student.Catalogue;
-import android.itacademy.by.dz6.student.Student;
 import android.itacademy.by.menu.R;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -14,8 +13,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 
 public class MainActivity extends AppCompatActivity
-        implements RecycleFragment.OnAddClickListener,
-        StudentAdapter.onItemClickListener,
+        implements StudentListFragment.OnAddClickListener,
+        StudentAdapter.OnItemClickListener,
         DetailsFragment.DetailsActions {
 
     private boolean dualPan;
@@ -86,10 +85,11 @@ public class MainActivity extends AppCompatActivity
     }
 
     public void refresh() {
-        RecycleFragment recycleFragment = (RecycleFragment) getSupportFragmentManager()
+        StudentListFragment studentListFragment = (StudentListFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.fragmentRecycle);
-        assert recycleFragment != null;
-        recycleFragment.getAdapter().notifyDataSetChanged();
+        if (studentListFragment != null) {
+            studentListFragment.getAdapter().notifyDataSetChanged();
+        }
     }
 
     public void removeDetailsFragment() {

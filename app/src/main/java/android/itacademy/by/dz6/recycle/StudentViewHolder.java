@@ -10,35 +10,35 @@ import android.widget.TextView;
 
 
 public class StudentViewHolder extends RecyclerView.ViewHolder {
-    private ImageView photo;
-    private TextView fName;
-    private TextView lName;
+    private ImageView photoImageView;
+    private TextView nameTextView;
+    private TextView lastNameTextView;
 
 
     public StudentViewHolder(@NonNull View itemView) {
         super(itemView);
-        photo = itemView.findViewById(R.id.person_photo);
-        fName = itemView.findViewById(R.id.person_name);
-        lName = itemView.findViewById(R.id.person_surname);
+        photoImageView = itemView.findViewById(R.id.person_photo);
+        nameTextView = itemView.findViewById(R.id.person_name);
+        lastNameTextView = itemView.findViewById(R.id.person_surname);
     }
 
     public void bind(Student student) {
         if (student.getFirstName() != null) {
-            fName.setText(student.getFirstName());
+            nameTextView.setText(student.getFirstName());
         } else {
-            fName.setText("");
+            nameTextView.setText("");
         }
 
         if (student.getLastName() != null) {
-            lName.setText(student.getLastName());
+            lastNameTextView.setText(student.getLastName());
         } else {
-            lName.setText("");
+            lastNameTextView.setText("");
         }
 
         if (student.getTextUrl() != null) {
-            ImageLoaderUtil.loadImage(photo, student.getTextUrl());
+            ImageLoaderUtil.loadImage(photoImageView, student.getTextUrl());
         } else {
-            photo.setImageDrawable(null);
+            photoImageView.setImageDrawable(null);
         }
     }
 }
