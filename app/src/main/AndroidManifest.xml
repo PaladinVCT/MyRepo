@@ -57,6 +57,7 @@
         <activity
             android:name="android.itacademy.by.dz4.SovaActivity"
             android:screenOrientation="portrait" />
+        <activity android:name="android.itacademy.by.dz6.retrofit.RetrofitActivity"/>
 
         <activity android:name="android.itacademy.by.dz5.Dz5Activity" />
         <activity android:name="android.itacademy.by.dz6.activities.MainActivity" />
