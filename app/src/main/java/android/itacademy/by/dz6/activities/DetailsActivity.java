@@ -2,8 +2,6 @@ package android.itacademy.by.dz6.activities;
 
 import android.content.Intent;
 import android.itacademy.by.dz6.fragments.DetailsFragment;
-import android.itacademy.by.dz6.student.Catalogue;
-import android.itacademy.by.dz6.student.Student;
 import android.itacademy.by.menu.R;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -31,14 +29,14 @@ public class DetailsActivity extends AppCompatActivity
 
     @Override
     public void deleteAndExit(int id) {
-        Catalogue.getInstance().deleteStudent(id);
+//        Catalogue.getInstance().deleteStudent(id);
         onBackPressed();
     }
 
     @Override
     public void saveAndExit(int id, String name, String lastName) {
-        Catalogue.getInstance().getStudent(id).setFirstName(name);
-        Catalogue.getInstance().getStudent(id).setLastName(lastName);
+//        Catalogue.getInstance().getStudent(id).setFirstName(name);
+//        Catalogue.getInstance().getStudent(id).setLastName(lastName);
         onBackPressed();
     }
 

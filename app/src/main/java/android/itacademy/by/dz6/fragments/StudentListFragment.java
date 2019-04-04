@@ -2,7 +2,6 @@ package android.itacademy.by.dz6.fragments;
 
 import android.content.Context;
 import android.itacademy.by.dz6.recycle.StudentAdapter;
-import android.itacademy.by.dz6.student.Catalogue;
 import android.itacademy.by.dz6.student.Student;
 import android.itacademy.by.menu.R;
 import android.os.Bundle;
@@ -13,7 +12,6 @@ import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.text.Editable;
-import android.text.TextUtils;
 import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -85,9 +83,9 @@ public class StudentListFragment extends Fragment {
             }
         });
 
-        for (int i = 0; i < Catalogue.getInstance().countStudents(); i++) {
-            catalogueCopy.add(Catalogue.getInstance().getStudent(i));
-        }
+//        for (int i = 0; i < Catalogue.getInstance().countStudents(); i++) {
+//            catalogueCopy.add(Catalogue.getInstance().getStudent(i));
+//        }
     }
 
     public StudentAdapter getAdapter() {
@@ -96,19 +94,19 @@ public class StudentListFragment extends Fragment {
 
 
     private void filter(String text) {
-        ArrayList<Student> filteredList = new ArrayList<>();
-        ArrayList<Student> originalList = new ArrayList<>();
-        for (int i = 0; i < Catalogue.getInstance().countStudents(); i++) {
-            originalList.add(Catalogue.getInstance().getStudent(i));
-        }
-        if (!TextUtils.isEmpty(text)) {
-            for (Student student : originalList) {
-                if (student.getFirstName().toLowerCase().contains(text.toLowerCase())
-                        || student.getLastName().toLowerCase().contains(text.toLowerCase())) {
-                    filteredList.add(student);
-                }
-            }
-        } else filteredList.addAll(catalogueCopy);
-        adapter.filterList(filteredList);
+//        ArrayList<Student> filteredList = new ArrayList<>();
+//        ArrayList<Student> originalList = new ArrayList<>();
+//        for (int i = 0; i < Catalogue.getInstance().countStudents(); i++) {
+//            originalList.add(Catalogue.getInstance().getStudent(i));
+//        }
+//        if (!TextUtils.isEmpty(text)) {
+//            for (Student student : originalList) {
+//                if (student.getFirstName().toLowerCase().contains(text.toLowerCase())
+//                        || student.getLastName().toLowerCase().contains(text.toLowerCase())) {
+//                    filteredList.add(student);
+//                }
+//            }
+//        } else filteredList.addAll(catalogueCopy);
+//        adapter.filterList(filteredList);
     }
 }

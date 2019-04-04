@@ -1,18 +1,13 @@
 package android.itacademy.by.dz6.recycle
 
 import android.content.Context
-import android.itacademy.by.dz6.retrofit.RetrofitActivity
-import android.itacademy.by.dz6.student.Catalogue
+import android.itacademy.by.dz6.activities.MainActivity
 import android.itacademy.by.dz6.student.Student
 import android.itacademy.by.menu.R
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
-import org.reactivestreams.Subscriber
-
-import java.util.ArrayList
-import javax.security.auth.callback.Callback
+import java.util.*
 
 class StudentAdapter(private val context: Context) : RecyclerView.Adapter<StudentViewHolder>() {
 
@@ -35,30 +30,18 @@ class StudentAdapter(private val context: Context) : RecyclerView.Adapter<Studen
         return holder
     }
 
-    override fun onBindViewHolder(studentViewHolder: StudentViewHolder, Id: Int) {
-        studentViewHolder.bind(Catalogue.getInstance().getStudent(Id))
+    override fun onBindViewHolder(studentViewHolder: StudentViewHolder, id: Int) {
 
-        val request = RetrofitActivity().getApi()
-        val b = request.getStudents().map {Catalogue->
-            Catalogue.studentsList
-        }
-        val c =b.blockingGet()
-        c.get(0)
-
-        }
-
+        studentViewHolder.bind(MainActivity().listStudents.get(id))
     }
 
+    override fun getItemCount(): Int {
+        return MainActivity().listStudents.size
+    }
 
-}
-
-override fun getItemCount(): Int {
-    return Catalogue.getInstance().countStudents()
-}
-
-fun filterList(filteredList: ArrayList<Student>) {
-    Catalogue.getInstance().getFullList().clear()
-    Catalogue.getInstance().getFullList().addAll(filteredList)
-    notifyDataSetChanged()
-}
+    fun filterList(filteredList: ArrayList<Student>) {
+//        Catalogue.getInstance().getFullList().clear()
+//        Catalogue.getInstance().getFullList().addAll(filteredList)
+//        notifyDataSetChanged()
+    }
 }

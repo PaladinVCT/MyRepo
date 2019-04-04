@@ -1,8 +1,6 @@
 package android.itacademy.by.dz6.activities;
 
 import android.app.Activity;
-import android.itacademy.by.dz6.student.Catalogue;
-import android.itacademy.by.dz6.student.Student;
 import android.itacademy.by.menu.R;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -39,9 +37,9 @@ public class CreateActivity extends Activity implements View.OnClickListener {
         if (lastName.getText().toString().equals("")) {
             lastName.setText("Smith");
         }
-        Catalogue.getInstance()
-                .addStudent(new Student(firstName.getText().toString(), lastName.getText()
-                        .toString(), photo.getText().toString()));
+//        Catalogue.getInstance()
+//                .addStudent(new Student(firstName.getText().toString(), lastName.getText()
+//                        .toString(), photo.getText().toString()));
 
         onBackPressed();
     }

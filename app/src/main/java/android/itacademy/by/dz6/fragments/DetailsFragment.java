@@ -1,9 +1,6 @@
 package android.itacademy.by.dz6.fragments;
 
 import android.content.Context;
-import android.itacademy.by.dz6.recycle.ImageLoaderUtil;
-import android.itacademy.by.dz6.student.Catalogue;
-import android.itacademy.by.dz6.student.Student;
 import android.itacademy.by.menu.R;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -65,10 +62,10 @@ public class DetailsFragment extends Fragment {
     }
 
     public void initializeData(int id) {
-        this.id = id;
-        Student student = Catalogue.getInstance().getStudent(id);
-        editName.setText(student.getFirstName());
-        editLastname.setText(student.getLastName());
-        ImageLoaderUtil.loadImage(editPhoto, student.getTextUrl());
+//        this.id = id;
+//        Student student = Catalogue.getInstance().getStudent(id);
+//        editName.setText(student.getFirstName());
+//        editLastname.setText(student.getLastName());
+//        ImageLoaderUtil.loadImage(editPhoto, student.getTextUrl());
     }
 }
