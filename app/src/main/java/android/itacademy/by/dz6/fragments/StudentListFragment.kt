@@ -20,8 +20,7 @@ import android.widget.EditText
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
 import kotlinx.android.synthetic.main.recycle_layout.*
-
-import java.util.ArrayList
+import java.util.*
 
 class StudentListFragment : Fragment() {
 
@@ -114,6 +113,11 @@ class StudentListFragment : Fragment() {
                         { error -> Log.e("ERROR", error.message) }
                 )
 
+    }
+
+    override fun onResume() {
+        super.onResume()
+        requestListStudents()
     }
 
 }

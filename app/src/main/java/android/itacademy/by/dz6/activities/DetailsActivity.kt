@@ -6,6 +6,7 @@ import android.itacademy.by.dz6.student.LocalStudentList
 import android.itacademy.by.menu.R
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
+import javax.security.auth.callback.Callback
 
 class DetailsActivity : AppCompatActivity(), DetailsFragment.DetailsActions {
 
@@ -24,7 +25,9 @@ class DetailsActivity : AppCompatActivity(), DetailsFragment.DetailsActions {
     }
 
     override fun deleteAndExit(id: Int) {
-        //        LocalStudentList.getInstance().deleteStudent(id);
+        val objectId = LocalStudentList.instance.list!!.get(id).objectId
+        provideApi().deleteStudent(objectId).enqueue(Callback<>
+        )
         onBackPressed()
     }
 
@@ -32,12 +35,9 @@ class DetailsActivity : AppCompatActivity(), DetailsFragment.DetailsActions {
         val student = LocalStudentList.instance.list!!.get(id)
         student.NAME = name
         student.LAST_NAME = lastName
-        provideApi().editStudent(student)
-        onBackPressed()
-    }
+        provideApi().editStudent(student.objectId,student).request()
 
-    override fun onBackPressed() {
-        super.onBackPressed()
+        onBackPressed()
     }
 
     override fun initializeData() {

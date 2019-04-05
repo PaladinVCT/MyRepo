@@ -22,6 +22,7 @@ class DetailsFragment : Fragment() {
     private var deleteButton: Button? = null
 
     private var detailsActionsListener: DetailsActions? = null
+    private var localId :Int = 0
 
     interface DetailsActions {
         fun initializeData()
@@ -51,15 +52,16 @@ class DetailsFragment : Fragment() {
 
         saveButton!!.setOnClickListener { _ ->
             detailsActionsListener!!
-                    .saveAndExit(id, editName!!.text.toString(), editLastname!!.text.toString())
+                    .saveAndExit(localId, editName!!.text.toString(), editLastname!!.text.toString())
         }
-        deleteButton!!.setOnClickListener { _ -> detailsActionsListener!!.deleteAndExit(id) }
+        deleteButton!!.setOnClickListener { _ -> detailsActionsListener!!.deleteAndExit(localId) }
 
         detailsActionsListener!!.initializeData()
     }
 
     fun initializeData(id: Int) {
-        val student = LocalStudentList.instance.list!!.get(id)
+        localId=id
+        val student = LocalStudentList.instance.list!!.get(localId)
         editName!!.setText(student.NAME)
         editLastname!!.setText(student.LAST_NAME)
         ImageLoaderUtil.loadImage(editPhoto, student.PHOTO_URL)
