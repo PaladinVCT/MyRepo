@@ -20,7 +20,6 @@ class DetailsFragment : Fragment() {
     private var editPhoto: ImageView? = null
     private var saveButton: Button? = null
     private var deleteButton: Button? = null
-//    private var id: Int = 0
 
     private var detailsActionsListener: DetailsActions? = null
 
@@ -50,18 +49,17 @@ class DetailsFragment : Fragment() {
         saveButton = view.findViewById(R.id.studentSaveButton)
         deleteButton = view.findViewById(R.id.studentDeleteButton)
 
-        saveButton!!.setOnClickListener { v ->
+        saveButton!!.setOnClickListener { _ ->
             detailsActionsListener!!
                     .saveAndExit(id, editName!!.text.toString(), editLastname!!.text.toString())
         }
-        deleteButton!!.setOnClickListener { v -> detailsActionsListener!!.deleteAndExit(id) }
+        deleteButton!!.setOnClickListener { _ -> detailsActionsListener!!.deleteAndExit(id) }
 
         detailsActionsListener!!.initializeData()
     }
 
     fun initializeData(id: Int) {
-//        this.id = id
-        val student = LocalStudentList.instance.localStudentList!!.get(id)
+        val student = LocalStudentList.instance.list!!.get(id)
         editName!!.setText(student.NAME)
         editLastname!!.setText(student.LAST_NAME)
         ImageLoaderUtil.loadImage(editPhoto, student.PHOTO_URL)

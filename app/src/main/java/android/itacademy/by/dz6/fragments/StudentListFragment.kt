@@ -10,7 +10,6 @@ import android.os.Bundle
 import android.support.design.widget.FloatingActionButton
 import android.support.v4.app.Fragment
 import android.support.v7.widget.LinearLayoutManager
-import android.support.v7.widget.RecyclerView
 import android.text.Editable
 import android.text.TextWatcher
 import android.util.Log
@@ -108,7 +107,7 @@ class StudentListFragment : Fragment() {
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(
                         { result ->
-                            LocalStudentList.instance.localStudentList=result
+                            LocalStudentList.instance.list=result
                             setupRecycler(result)
                         }
                         ,

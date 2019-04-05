@@ -21,22 +21,10 @@ class StudentViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
     }
 
     fun bind(student: Student) {
-        if (student.NAME != null) {
-            nameTextView.setText(student.NAME)
-        } else {
-            nameTextView.text = ""
-        }
+        nameTextView.setText(student.NAME)
 
-        if (student.LAST_NAME != null) {
-            lastNameTextView.setText(student.LAST_NAME)
-        } else {
-            lastNameTextView.text = ""
-        }
+        lastNameTextView.setText(student.LAST_NAME)
 
-        if (student.PHOTO_URL != null) {
-            ImageLoaderUtil.loadImage(photoImageView, student.PHOTO_URL)
-        } else {
-            photoImageView.setImageDrawable(null)
-        }
+        ImageLoaderUtil.loadImage(photoImageView, student.PHOTO_URL)
     }
 }

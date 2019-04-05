@@ -2,13 +2,9 @@ package android.itacademy.by.dz6.student
 
 data class Student(
 
-val PHOTO_URL: String,
-//val created: String,
+var PHOTO_URL: String,
 val ID: Int,
-val LAST_NAME: String,
-//val updated: Double,
+var LAST_NAME: String,
 val objectId: String,
-val NAME: String
-//val ownerId: String,
-//val ___class: String
+var NAME: String
 )
