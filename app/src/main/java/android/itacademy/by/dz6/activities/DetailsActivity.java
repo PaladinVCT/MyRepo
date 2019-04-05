@@ -29,14 +29,14 @@ public class DetailsActivity extends AppCompatActivity
 
     @Override
     public void deleteAndExit(int id) {
-//        Catalogue.getInstance().deleteStudent(id);
+//        LocalStudentList.getInstance().deleteStudent(id);
         onBackPressed();
     }
 
     @Override
     public void saveAndExit(int id, String name, String lastName) {
-//        Catalogue.getInstance().getStudent(id).setFirstName(name);
-//        Catalogue.getInstance().getStudent(id).setLastName(lastName);
+//        LocalStudentList.getInstance().getStudent(id).setFirstName(name);
+//        LocalStudentList.getInstance().getStudent(id).setLastName(lastName);
         onBackPressed();
     }
 

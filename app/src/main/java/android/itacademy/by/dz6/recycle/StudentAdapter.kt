@@ -1,7 +1,6 @@
 package android.itacademy.by.dz6.recycle
 
 import android.content.Context
-import android.itacademy.by.dz6.activities.MainActivity
 import android.itacademy.by.dz6.student.Student
 import android.itacademy.by.menu.R
 import android.support.v7.widget.RecyclerView
@@ -9,7 +8,9 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import java.util.*
 
-class StudentAdapter(private val context: Context) : RecyclerView.Adapter<StudentViewHolder>() {
+class StudentAdapter(
+        private val studentList: List<Student>,
+        private val context: Context?) : RecyclerView.Adapter<StudentViewHolder>() {
 
     private var onItemClickListener: OnItemClickListener? = null
 
@@ -32,16 +33,16 @@ class StudentAdapter(private val context: Context) : RecyclerView.Adapter<Studen
 
     override fun onBindViewHolder(studentViewHolder: StudentViewHolder, id: Int) {
 
-        studentViewHolder.bind(MainActivity().listStudents.get(id))
+        studentViewHolder.bind(studentList.get(id))
     }
 
     override fun getItemCount(): Int {
-        return MainActivity().listStudents.size
+        return studentList.size
     }
 
     fun filterList(filteredList: ArrayList<Student>) {
-//        Catalogue.getInstance().getFullList().clear()
-//        Catalogue.getInstance().getFullList().addAll(filteredList)
+//        LocalStudentList.getInstance().getFullList().clear()
+//        LocalStudentList.getInstance().getFullList().addAll(filteredList)
 //        notifyDataSetChanged()
     }
 }

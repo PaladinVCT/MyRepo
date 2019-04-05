@@ -5,19 +5,18 @@ import android.itacademy.by.dz6.fragments.DetailsFragment
 import android.itacademy.by.dz6.fragments.StudentListFragment
 import android.itacademy.by.dz6.recycle.StudentAdapter
 import android.itacademy.by.dz6.retrofit.provideApi
-import android.itacademy.by.dz6.student.Student
 import android.itacademy.by.menu.R
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.view.View
 
+
+
 class MainActivity : AppCompatActivity(), StudentListFragment.OnAddClickListener, StudentAdapter.OnItemClickListener, DetailsFragment.DetailsActions {
-    lateinit var listStudents : ArrayList<Student>
     private var dualPan: Boolean = false
     private var id: Int = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
-       listStudents = provideApi().getStudents().execute().body()!!
 
         super.onCreate(savedInstanceState)
         setContentView(R.layout.main_layout)
@@ -64,14 +63,14 @@ class MainActivity : AppCompatActivity(), StudentListFragment.OnAddClickListener
     }
 
     override fun saveAndExit(id: Int, name: String, lastName: String) {
-        //        Catalogue.getInstance().getStudent(id).setFirstName(name);
-        //        Catalogue.getInstance().getStudent(id).setLastName(lastName);
+        //        LocalStudentList.getInstance().getStudent(id).setFirstName(name);
+        //        LocalStudentList.getInstance().getStudent(id).setLastName(lastName);
         removeDetailsFragment()
         refresh()
     }
 
     override fun deleteAndExit(id: Int) {
-        //        Catalogue.getInstance().deleteStudent(id);
+        //        LocalStudentList.getInstance().deleteStudent(id);
         removeDetailsFragment()
         refresh()
     }

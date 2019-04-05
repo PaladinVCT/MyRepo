@@ -37,7 +37,7 @@ public class CreateActivity extends Activity implements View.OnClickListener {
         if (lastName.getText().toString().equals("")) {
             lastName.setText("Smith");
         }
-//        Catalogue.getInstance()
+//        LocalStudentList.getInstance()
 //                .addStudent(new Student(firstName.getText().toString(), lastName.getText()
 //                        .toString(), photo.getText().toString()));
 
