@@ -4,7 +4,6 @@ import android.content.Intent
 import android.itacademy.by.dz6.fragments.DetailsFragment
 import android.itacademy.by.dz6.fragments.StudentListFragment
 import android.itacademy.by.dz6.recycle.StudentAdapter
-import android.itacademy.by.dz6.retrofit.provideApi
 import android.itacademy.by.menu.R
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
@@ -78,7 +77,7 @@ class MainActivity : AppCompatActivity(), StudentListFragment.OnAddClickListener
     fun refresh() {
         val studentListFragment = supportFragmentManager
                 .findFragmentById(R.id.fragmentRecycle) as StudentListFragment?
-        studentListFragment?.adapter?.notifyDataSetChanged()
+//        studentListFragment?.adapter?.notifyDataSetChanged()
     }
 
     fun removeDetailsFragment() {

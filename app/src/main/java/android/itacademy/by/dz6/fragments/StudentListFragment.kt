@@ -24,7 +24,6 @@ import java.util.*
 
 class StudentListFragment : Fragment() {
 
-    var adapter: StudentAdapter? = null
     private var catalogueCopy: List<Student>? = null
 
     lateinit var onAddClickListener: OnAddClickListener
@@ -106,7 +105,7 @@ class StudentListFragment : Fragment() {
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(
                         { result ->
-                            LocalStudentList.instance.list=result
+                            LocalStudentList.instance.list = result
                             setupRecycler(result)
                         }
                         ,
@@ -117,7 +116,11 @@ class StudentListFragment : Fragment() {
 
     override fun onResume() {
         super.onResume()
-        requestListStudents()
+        if (recyclerDz6.adapter!=null) {
+            setupRecycler(LocalStudentList.instance.list!!)
+            recyclerDz6.adapter!!.notifyDataSetChanged()
+        }
     }
+
 
 }

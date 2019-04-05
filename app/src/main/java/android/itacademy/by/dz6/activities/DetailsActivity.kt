@@ -6,7 +6,9 @@ import android.itacademy.by.dz6.student.LocalStudentList
 import android.itacademy.by.menu.R
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
-import javax.security.auth.callback.Callback
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 
 class DetailsActivity : AppCompatActivity(), DetailsFragment.DetailsActions {
 
@@ -25,9 +27,18 @@ class DetailsActivity : AppCompatActivity(), DetailsFragment.DetailsActions {
     }
 
     override fun deleteAndExit(id: Int) {
-        val objectId = LocalStudentList.instance.list!!.get(id).objectId
-        provideApi().deleteStudent(objectId).enqueue(Callback<>
-        )
+        val student = LocalStudentList.instance.list!!.get(id)
+        val objectId = student.objectId
+        provideApi().deleteStudent(objectId).enqueue(object : Callback<Void> {
+            override fun onFailure(call: Call<Void>?, t: Throwable?) {
+
+            }
+
+            override fun onResponse(call: Call<Void>?, response: Response<Void>?) {
+
+            }
+        })
+            LocalStudentList.instance.list!!.remove(student)
         onBackPressed()
     }
 
@@ -35,7 +46,16 @@ class DetailsActivity : AppCompatActivity(), DetailsFragment.DetailsActions {
         val student = LocalStudentList.instance.list!!.get(id)
         student.NAME = name
         student.LAST_NAME = lastName
-        provideApi().editStudent(student.objectId,student).request()
+        provideApi().editStudent(student.objectId, student).enqueue(object : Callback<Void> {
+            override fun onFailure(call: Call<Void>?, t: Throwable?) {
+            }
+
+            override fun onResponse(call: Call<Void>?, response: Response<Void>?) {
+                LocalStudentList.instance.list!!.get(id).NAME = name
+                LocalStudentList.instance.list!!.get(id).LAST_NAME = lastName
+
+            }
+        })
 
         onBackPressed()
     }
