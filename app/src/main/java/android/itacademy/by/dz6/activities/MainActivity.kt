@@ -84,7 +84,16 @@ class MainActivity : AppCompatActivity(), StudentListFragment.OnAddClickListener
     }
 
     override fun deleteAndExit(id: Int) {
-        //        LocalStudentList.getInstance().deleteStudent(id);
+        val student = LocalStudentList.instance.list!!.get(id)
+        val objectId = student.objectId
+        provideApi().deleteStudent(objectId).enqueue(object : Callback<Void> {
+            override fun onFailure(call: Call<Void>?, t: Throwable?) {
+            }
+
+            override fun onResponse(call: Call<Void>?, response: Response<Void>?) {
+            }
+        })
+        LocalStudentList.instance.list!!.remove(student)
         removeDetailsFragment()
         refresh()
     }

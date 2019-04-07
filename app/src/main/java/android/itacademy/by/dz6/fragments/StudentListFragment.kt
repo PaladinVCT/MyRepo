@@ -10,7 +10,6 @@ import android.os.Bundle
 import android.support.design.widget.FloatingActionButton
 import android.support.v4.app.Fragment
 import android.support.v7.widget.LinearLayoutManager
-import android.support.v7.widget.RecyclerView
 import android.text.Editable
 import android.text.TextWatcher
 import android.util.Log
@@ -28,12 +27,6 @@ class StudentListFragment : Fragment() {
     private var catalogueCopy: List<Student>? = null
 
     lateinit var onAddClickListener: OnAddClickListener
-
-    lateinit var refreshListener: RefreshListener
-
-    interface RefreshListener {
-        fun refresh(adapter: RecyclerView.Adapter<RecyclerView.ViewHolder>)
-    }
 
     interface OnAddClickListener {
         fun startCreateActivity()
