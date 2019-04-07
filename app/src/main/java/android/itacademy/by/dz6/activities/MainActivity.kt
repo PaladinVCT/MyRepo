@@ -4,11 +4,15 @@ import android.content.Intent
 import android.itacademy.by.dz6.fragments.DetailsFragment
 import android.itacademy.by.dz6.fragments.StudentListFragment
 import android.itacademy.by.dz6.recycle.StudentAdapter
+import android.itacademy.by.dz6.retrofit.provideApi
+import android.itacademy.by.dz6.student.LocalStudentList
 import android.itacademy.by.menu.R
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.view.View
-
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 
 
 class MainActivity : AppCompatActivity(), StudentListFragment.OnAddClickListener, StudentAdapter.OnItemClickListener, DetailsFragment.DetailsActions {
@@ -19,7 +23,6 @@ class MainActivity : AppCompatActivity(), StudentListFragment.OnAddClickListener
 
         super.onCreate(savedInstanceState)
         setContentView(R.layout.main_layout)
-
 
 
         val detailsFrame = findViewById<View>(R.id.fragmentDetails)
@@ -62,9 +65,21 @@ class MainActivity : AppCompatActivity(), StudentListFragment.OnAddClickListener
     }
 
     override fun saveAndExit(id: Int, name: String, lastName: String) {
-        //        LocalStudentList.getInstance().getStudent(id).setFirstName(name);
-        //        LocalStudentList.getInstance().getStudent(id).setLastName(lastName);
+
+        val student = LocalStudentList.instance.list!!.get(id)
+        student.NAME = name
+        student.LAST_NAME = lastName
+        provideApi().editStudent(student.objectId, student).enqueue(object : Callback<Void> {
+            override fun onFailure(call: Call<Void>?, t: Throwable?) {
+            }
+
+            override fun onResponse(call: Call<Void>?, response: Response<Void>?) {
+                LocalStudentList.instance.list!!.get(id).NAME = name
+                LocalStudentList.instance.list!!.get(id).LAST_NAME = lastName
+            }
+        })
         removeDetailsFragment()
+
         refresh()
     }
 
@@ -77,7 +92,7 @@ class MainActivity : AppCompatActivity(), StudentListFragment.OnAddClickListener
     fun refresh() {
         val studentListFragment = supportFragmentManager
                 .findFragmentById(R.id.fragmentRecycle) as StudentListFragment?
-//        studentListFragment?.adapter?.notifyDataSetChanged()
+        studentListFragment?.onResume()
     }
 
     fun removeDetailsFragment() {

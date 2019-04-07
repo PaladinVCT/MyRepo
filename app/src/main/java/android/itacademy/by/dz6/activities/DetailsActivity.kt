@@ -31,14 +31,12 @@ class DetailsActivity : AppCompatActivity(), DetailsFragment.DetailsActions {
         val objectId = student.objectId
         provideApi().deleteStudent(objectId).enqueue(object : Callback<Void> {
             override fun onFailure(call: Call<Void>?, t: Throwable?) {
-
             }
 
             override fun onResponse(call: Call<Void>?, response: Response<Void>?) {
-
             }
         })
-            LocalStudentList.instance.list!!.remove(student)
+        LocalStudentList.instance.list!!.remove(student)
         onBackPressed()
     }
 
