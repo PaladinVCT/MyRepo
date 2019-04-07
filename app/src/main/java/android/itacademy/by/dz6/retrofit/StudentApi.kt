@@ -11,7 +11,7 @@ interface StudentApi {
     fun getStudents(): Observable<ArrayList<Student>>
 
     @POST("BD6A1856-C855-3C8F-FF6D-CB79DCD38700/32C6E496-FCD4-35DF-FF39-49B49639E500/data/StudentsTable")
-    fun createStudent(student: Student)
+    fun createStudent(@Body student: Student): Call<Void>
 
     @DELETE("BD6A1856-C855-3C8F-FF6D-CB79DCD38700/32C6E496-FCD4-35DF-FF39-49B49639E500/data/StudentsTable/{objectId}")
     fun deleteStudent(@Path("objectId") objectId: String): Call<Void>

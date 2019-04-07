@@ -121,6 +121,4 @@ class StudentListFragment : Fragment() {
             recyclerDz6.adapter!!.notifyDataSetChanged()
         }
     }
-
-
 }
