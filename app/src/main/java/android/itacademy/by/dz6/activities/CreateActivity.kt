@@ -6,6 +6,7 @@ import android.itacademy.by.dz6.student.LocalStudentList
 import android.itacademy.by.dz6.student.Student
 import android.itacademy.by.menu.R
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.widget.Button
 import android.widget.EditText
@@ -41,11 +42,12 @@ class CreateActivity : Activity(), View.OnClickListener {
             lastName!!.setText("Smith")
         }
 
-        val student = Student(photo.toString(), LocalStudentList.instance.list!!.size,
-                lastName.toString(), "", firstName.toString())
+        val student = Student(photo!!.text.toString(), LocalStudentList.instance.list!!.size,
+                lastName!!.text.toString(), "", firstName!!.text.toString())
 
         provideApi().createStudent(student).enqueue(object : Callback<Void> {
             override fun onFailure(call: Call<Void>?, t: Throwable?) {
+                Log.e("AAA", "error")
             }
 
             override fun onResponse(call: Call<Void>?, response: Response<Void>?) {
