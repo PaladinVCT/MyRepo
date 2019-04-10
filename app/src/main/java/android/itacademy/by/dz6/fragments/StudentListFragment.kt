@@ -63,7 +63,9 @@ class StudentListFragment : Fragment() {
             }
 
             override fun afterTextChanged(s: Editable) {
-                filter(s.toString())
+                if (catalogueCopy != null) {
+                    filter(s.toString())
+                }
             }
         })
     }
