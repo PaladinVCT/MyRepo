@@ -5,6 +5,13 @@
     android:background="@color/grey_background"
     android:orientation="vertical">
 
+    <ProgressBar
+        android:id="@+id/progressStudentLoad"
+        style="?android:attr/progressBarStyleInverse"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center" />
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -13,19 +20,20 @@
         android:orientation="vertical">
 
         <EditText
-
             android:id="@+id/editTextSearch"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_margin="16dp"
             android:drawableLeft="@android:drawable/ic_menu_search"
-             />
+            android:hint="@string/search" />
+
 
         <android.support.v7.widget.RecyclerView
             android:id="@+id/recyclerDz6"
             android:layout_width="match_parent"
             android:layout_height="match_parent">
+
 
         </android.support.v7.widget.RecyclerView>
 

@@ -79,7 +79,6 @@ class MainActivity : AppCompatActivity(), StudentListFragment.OnAddClickListener
             }
         })
         removeDetailsFragment()
-
         refresh()
     }
 

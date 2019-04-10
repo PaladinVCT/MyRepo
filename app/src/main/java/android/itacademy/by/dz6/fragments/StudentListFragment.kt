@@ -11,20 +11,22 @@ import android.support.design.widget.FloatingActionButton
 import android.support.v4.app.Fragment
 import android.support.v7.widget.LinearLayoutManager
 import android.text.Editable
+import android.text.TextUtils
 import android.text.TextWatcher
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.EditText
+import android.widget.ProgressBar
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
 import kotlinx.android.synthetic.main.recycle_layout.*
-import java.util.*
+import kotlin.collections.ArrayList
 
 class StudentListFragment : Fragment() {
 
-    private var catalogueCopy: List<Student>? = null
+    private var catalogueCopy: ArrayList<Student>? = null
 
     lateinit var onAddClickListener: OnAddClickListener
 
@@ -43,10 +45,8 @@ class StudentListFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
         requestListStudents()
 
-        catalogueCopy = ArrayList()
 
         val fab = view.findViewById<FloatingActionButton>(R.id.fab)
         fab.setOnClickListener { onAddClickListener.startCreateActivity() }
@@ -66,28 +66,25 @@ class StudentListFragment : Fragment() {
                 filter(s.toString())
             }
         })
-
-        //        for (int i = 0; i < LocalStudentList.getInstance().countStudents(); i++) {
-        //            catalogueCopy.add(LocalStudentList.getInstance().getStudent(i));
-        //        }
     }
 
+    private fun filter(enteredText: String) {
+        var filteredList = ArrayList<Student>()
+        val originalList = LocalStudentList.instance.list
 
-    private fun filter(text: String) {
-        //        ArrayList<Student> filteredList = new ArrayList<>();
-        //        ArrayList<Student> originalList = new ArrayList<>();
-        //        for (int i = 0; i < LocalStudentList.getInstance().countStudents(); i++) {
-        //            originalList.add(LocalStudentList.getInstance().getStudent(i));
-        //        }
-        //        if (!TextUtils.isEmpty(text)) {
-        //            for (Student student : originalList) {
-        //                if (student.getFirstName().toLowerCase().contains(text.toLowerCase())
-        //                        || student.getLastName().toLowerCase().contains(text.toLowerCase())) {
-        //                    filteredList.add(student);
-        //                }
-        //            }
-        //        } else filteredList.addAll(catalogueCopy);
-        //        adapter.filterList(filteredList);
+        if (!TextUtils.isEmpty(enteredText)) {
+            if (originalList != null) {
+                for (student in originalList) {
+                    if (student.NAME.toLowerCase().contains(enteredText.toLowerCase())
+                            || student.LAST_NAME.toLowerCase().contains(enteredText.toLowerCase())) {
+                        filteredList.add(student);
+                    }
+                }
+            }
+        } else {
+            filteredList = this.catalogueCopy!!
+        }
+        setupRecycler(filteredList);
     }
 
     fun setupRecycler(studentList: List<Student>) {
@@ -106,12 +103,13 @@ class StudentListFragment : Fragment() {
                 .subscribe(
                         { result ->
                             LocalStudentList.instance.list = result
+                            this.catalogueCopy = result
                             setupRecycler(result)
+                            progressStudentLoad.visibility = View.GONE
                         }
                         ,
                         { error -> Log.e("ERROR", error.message) }
                 )
-
     }
 
     override fun onResume() {

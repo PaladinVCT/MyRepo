@@ -39,10 +39,4 @@ class StudentAdapter(
     override fun getItemCount(): Int {
         return studentList.size
     }
-
-    fun filterList(filteredList: ArrayList<Student>) {
-//        LocalStudentList.getInstance().getFullList().clear()
-//        LocalStudentList.getInstance().getFullList().addAll(filteredList)
-//        notifyDataSetChanged()
-    }
 }
