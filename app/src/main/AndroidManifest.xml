@@ -46,6 +46,7 @@
         <activity android:name="android.itacademy.by.dz6.activities.MainActivity" />
         <activity android:name="android.itacademy.by.dz6.activities.DetailsActivity" />
         <activity android:name="android.itacademy.by.dz6.activities.CreateActivity" />
+        <activity android:name="android.itacademy.by.dz14.activities.Dz14Activity" />
     </application>
 
     <uses-permission android:name="android.permission.INTERNET" />

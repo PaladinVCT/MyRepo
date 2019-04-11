@@ -43,4 +43,6 @@
     <string name="first_name">First Name</string>
     <string name="last_name">Last Name</string>
     <string name="search">Search</string>
+    <string name="dz_14">ДЗ_14</string>
+
 </resources>

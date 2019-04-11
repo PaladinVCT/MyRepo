@@ -4,6 +4,11 @@ apply plugin: 'kotlin-android'
 
 android {
 
+    dataBinding {
+        enabled = true
+    }
+
+
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
@@ -49,6 +54,9 @@ dependencies {
     def okhttpVersion = "3.14.0"
     implementation "com.squareup.okhttp3:okhttp:$okhttpVersion"
     implementation "com.squareup.okhttp3:logging-interceptor:$okhttpVersion"
+    implementation "android.arch.lifecycle:extensions:1.1.1"
+    implementation "android.arch.lifecycle:viewmodel:1.1.1"
+
 }
 repositories {
     mavenCentral()

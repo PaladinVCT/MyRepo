@@ -3,6 +3,7 @@ package android.itacademy.by.menu;
 import android.app.Activity;
 import android.content.Intent;
 import android.itacademy.by.dz1.FirstActivity;
+import android.itacademy.by.dz14.activities.Dz14Activity;
 import android.itacademy.by.dz2.FlagsActivity;
 import android.itacademy.by.dz3.ImageActivity;
 import android.itacademy.by.dz3.LoginActivity;
@@ -37,6 +38,8 @@ public class MenuActivity extends Activity implements View.OnClickListener {
         dz5Button.setOnClickListener(this);
         Button dz6Button = findViewById(R.id.dz6Button);
         dz6Button.setOnClickListener(this);
+        Button dz7Button = findViewById(R.id.dz7Button);
+        dz7Button.setOnClickListener(this);
 
     }
 
@@ -76,6 +79,11 @@ public class MenuActivity extends Activity implements View.OnClickListener {
             case R.id.dz6Button:
                 Intent intent8 = new Intent(this, MainActivity.class);
                 startActivity(intent8);
+                overridePendingTransition(R.anim.entering,R.anim.exiting);
+                break;
+                case R.id.dz7Button:
+                Intent intent9 = new Intent(this, Dz14Activity.class);
+                startActivity(intent9);
                 overridePendingTransition(R.anim.entering,R.anim.exiting);
                 break;
         }
