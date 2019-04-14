@@ -17,17 +17,17 @@ class PersonViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
     private val sexTextView: TextView
 
     init {
-        photoImageView = itemView.findViewById<ImageView>(R.id.person_photo)
-        nameTextView = itemView.findViewById<TextView>(R.id.person_name)
-        lastNameTextView = itemView.findViewById<TextView>(R.id.person_surname)
-        ageTextView = itemView.findViewById<TextView>(R.id.person_age)
-        sexTextView = itemView.findViewById<TextView>(R.id.person_sex)
+        photoImageView = itemView.findViewById(R.id.person_photo)
+        nameTextView = itemView.findViewById(R.id.person_name)
+        lastNameTextView = itemView.findViewById(R.id.person_surname)
+        ageTextView = itemView.findViewById(R.id.person_age)
+        sexTextView = itemView.findViewById(R.id.person_sex)
     }
 
     fun bind(person: Person) {
         nameTextView.setText(person.name)
         lastNameTextView.setText(person.surname)
-        ageTextView.setText(person.age)
+        ageTextView.setText(person.age.toString())
         sexTextView.setText(person.sex.toString())
         ImageLoaderUtil.loadImage(photoImageView, person.urlPhoto)
     }

@@ -15,7 +15,6 @@ import android.view.View
 import android.widget.Button
 
 class MenuActivity : Activity(), View.OnClickListener {
-    private val diagNums = intArrayOf(10, 5, 3)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

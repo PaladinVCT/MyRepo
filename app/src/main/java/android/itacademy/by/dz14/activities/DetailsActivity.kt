@@ -1,4 +1,6 @@
 package android.itacademy.by.dz14.activities
 
-class DetailsActivity {
+import android.support.v7.app.AppCompatActivity
+
+class DetailsActivity :AppCompatActivity() {
 }
