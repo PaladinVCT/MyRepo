@@ -24,13 +24,11 @@ class PersonViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         sexTextView = itemView.findViewById<TextView>(R.id.person_sex)
     }
 
-        fun bind(person: Person) {
-            nameTextView.setText(person.name)
-            lastNameTextView.setText(person.surname)
-            ageTextView.setText(person.age)
-            sexTextView.setText(person.sex.toString())
-            ImageLoaderUtil.loadImage(photoImageView, person.urlPhoto)
-        }
-
-
+    fun bind(person: Person) {
+        nameTextView.setText(person.name)
+        lastNameTextView.setText(person.surname)
+        ageTextView.setText(person.age)
+        sexTextView.setText(person.sex.toString())
+        ImageLoaderUtil.loadImage(photoImageView, person.urlPhoto)
+    }
 }

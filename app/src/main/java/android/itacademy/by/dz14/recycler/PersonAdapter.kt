@@ -20,12 +20,14 @@ class PersonAdapter(private val list: List<Person>,
         val view = LayoutInflater.from(viewGroup.context)
                 .inflate(R.layout.item_person, viewGroup, false)
 
+        val holder = PersonViewHolder(view)
+
         val intent = Intent(context, DetailsActivity::class.java)
         intent.putExtra("ID", num)
         view.setOnClickListener {
             startActivity(it.context, intent, Bundle.EMPTY)
         }
-        return PersonViewHolder(view)
+        return holder
     }
 
     override fun onBindViewHolder(personViewHolder: PersonViewHolder, num: Int) {

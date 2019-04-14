@@ -6,8 +6,8 @@ data class Person(
         val surname: String,
         val age: Int,
         val sex: Enum<sex>
-) {
-}
+)
+
 
 enum class sex {
     M, F
