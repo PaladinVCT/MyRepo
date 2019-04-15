@@ -22,9 +22,9 @@ class PersonAdapter(private val list: List<Person>,
 
         val holder = PersonViewHolder(view)
 
-        val intent = Intent(context, DetailsActivity::class.java)
-        intent.putExtra("ID", num)
         view.setOnClickListener {
+            val intent = Intent(context, DetailsActivity::class.java)
+            intent.putExtra("ID", holder.adapterPosition)
             startActivity(it.context, intent, Bundle.EMPTY)
         }
         return holder
