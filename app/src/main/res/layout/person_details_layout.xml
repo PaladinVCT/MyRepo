@@ -7,6 +7,15 @@
             name="person"
             type="android.itacademy.by.dz14.entity.Person" />
 
+        <variable
+            name="handler"
+            type="android.itacademy.by.dz14.handlers.ArrowHandler" />
+
+        <variable
+            name="viewModel"
+            type="android.itacademy.by.dz14.viewmodel.PersonViewModel" />
+
+
     </data>
 
     <LinearLayout
@@ -20,6 +29,7 @@
             android:layout_height="50dp"
             android:layout_marginLeft="10dp"
             android:layout_marginTop="10dp"
+            android:onClick="@{handler::onArrowClick}"
             android:src="@drawable/back_arrow" />
 
         <ImageView
@@ -28,7 +38,9 @@
             android:layout_height="200dp"
             android:layout_gravity="center"
             android:layout_marginTop="10dp"
-            android:layout_marginBottom="30dp" />
+            android:layout_marginBottom="30dp"
+            app:imageUrl="@{person.urlPhoto}"
+         />
 
         <TextView
             android:id="@+id/personName"
@@ -48,7 +60,6 @@
             android:gravity="center"
             android:text="@{person.surname}"
             android:textSize="30sp" />
-
 
 
         <TextView
