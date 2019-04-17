@@ -1,7 +1,9 @@
 package android.itacademy.by.dz14.activities
 
+import android.arch.lifecycle.ViewModelProviders
 import android.databinding.DataBindingUtil
 import android.databinding.ViewDataBinding
+import android.itacademy.by.dz14.entity.Sex
 import android.itacademy.by.dz14.handlers.ArrowHandler
 import android.itacademy.by.dz14.viewmodel.PersonViewModel
 import android.itacademy.by.menu.BR
@@ -18,12 +20,12 @@ class DetailsActivity : AppCompatActivity() {
         val num = intent.getIntExtra("ID", 0)
         val person = PersonViewModel().list.get(num)
         val handler = ArrowHandler()
-        val viewModel = PersonViewModel()
-
+        val viewModel = ViewModelProviders.of(this).get(PersonViewModel::class.java)
         val binding = DataBindingUtil.setContentView<ViewDataBinding>(this, R.layout.person_details_layout)
         binding.setVariable(BR.person, person)
         binding.setVariable(BR.handler, handler)
-        binding.setVariable(BR.viewModel,viewModel)
+        binding.setVariable(BR.viewModel, viewModel)
+        binding.setVariable(BR.sex, Sex.M)
         binding.executePendingBindings()
     }
 }

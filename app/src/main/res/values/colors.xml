@@ -15,5 +15,8 @@
     <color name="diagram2">#E7CE50</color>
     <color name="diagram3">#ACDA6E</color>
     <color name="ClockBack">#EBEEE4</color>
+    <color name="pink_background">#FFC3D5</color>
+    <color name="blue_background">#BAE4FF</color>
     <color name="grey_background">#66DDD7D7</color>
+
 </resources>

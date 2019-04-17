@@ -13,5 +13,4 @@ class ArrowHandler() {
         val intent = Intent(view.context, Dz14Activity::class.java)
         ContextCompat.startActivity(view.context, intent, Bundle.EMPTY)
     }
-
 }

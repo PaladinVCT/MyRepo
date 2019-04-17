@@ -27,7 +27,5 @@ class Dz14Activity : AppCompatActivity() {
         recycler.layoutManager = layoutManager
         val adapter = PersonAdapter(personViewModel.list, this)
         recycler.adapter = adapter
-
-
     }
 }

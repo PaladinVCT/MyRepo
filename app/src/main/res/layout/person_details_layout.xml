@@ -15,62 +15,70 @@
             name="viewModel"
             type="android.itacademy.by.dz14.viewmodel.PersonViewModel" />
 
+        <variable
+            name="sex"
+            type="android.itacademy.by.dz14.entity.Sex" />
 
     </data>
 
-    <LinearLayout
+    <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:fillViewport="true"
-        android:orientation="vertical">
+        android:background="@{(person.sex==sex) ? @color/blue_background : @color/pink_background}">
 
-        <ImageView
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:layout_marginLeft="10dp"
-            android:layout_marginTop="10dp"
-            android:onClick="@{handler::onArrowClick}"
-            android:src="@drawable/back_arrow" />
 
-        <ImageView
-            android:id="@+id/personPhoto"
-            android:layout_width="200dp"
-            android:layout_height="200dp"
-            android:layout_gravity="center"
-            android:layout_marginTop="10dp"
-            android:layout_marginBottom="30dp"
-            app:imageUrl="@{person.urlPhoto}"
-         />
-
-        <TextView
-            android:id="@+id/personName"
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="16dp"
-            android:gravity="center"
-            android:text="@{person.name}"
-            android:textSize="30sp" />
+            android:layout_height="match_parent"
+            android:fillViewport="true"
+            android:orientation="vertical">
+
+            <ImageView
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="10dp"
+                android:onClick="@{handler::onArrowClick}"
+                android:src="@drawable/back_arrow" />
+
+            <ImageView
+                android:id="@+id/personPhoto"
+                android:layout_width="200dp"
+                android:layout_height="200dp"
+                android:layout_gravity="center"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="30dp"
+                app:imageUrl="@{person.urlPhoto}" />
+
+            <TextView
+                android:id="@+id/personName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="16dp"
+                android:gravity="center"
+                android:text="@{person.name}"
+                android:textSize="30sp" />
 
 
-        <TextView
-            android:id="@+id/personSurname"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="16dp"
-            android:gravity="center"
-            android:text="@{person.surname}"
-            android:textSize="30sp" />
+            <TextView
+                android:id="@+id/personSurname"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="16dp"
+                android:gravity="center"
+                android:text="@{person.surname}"
+                android:textSize="30sp" />
 
 
-        <TextView
-            android:id="@+id/personAge"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="16dp"
-            android:gravity="center"
-            android:text="@{Integer.toString(person.age)}"
-            android:textSize="30sp" />
+            <TextView
+                android:id="@+id/personAge"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="16dp"
+                android:gravity="center"
+                android:text="@{Integer.toString(person.age)}"
+                android:textSize="30sp" />
 
-    </LinearLayout>
-
+        </LinearLayout>
+    </FrameLayout>
 </layout>

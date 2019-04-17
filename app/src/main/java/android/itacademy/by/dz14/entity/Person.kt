@@ -5,11 +5,11 @@ data class Person(
         val name: String,
         val surname: String,
         val age: Int,
-        val sex: Enum<sex>
+        val sex: Enum<Sex>
 )
 
 
-enum class sex {
+enum class Sex {
     M, F
 
 }
