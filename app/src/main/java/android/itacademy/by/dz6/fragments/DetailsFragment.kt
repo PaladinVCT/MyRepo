@@ -1,7 +1,8 @@
 package android.itacademy.by.dz6.fragments
 
 import android.content.Context
-import android.itacademy.by.dz6.recycle.ImageLoaderUtil
+import android.itacademy.by.dz6.dagger.DaggerMagicBox
+import android.itacademy.by.dz6.imageloader.ImageLoaderUtil
 import android.itacademy.by.dz6.student.Catalogue
 import android.itacademy.by.menu.R
 import android.os.Bundle
@@ -12,6 +13,8 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.EditText
 import android.widget.ImageView
+import kotlinx.android.synthetic.main.details_layout.*
+import javax.inject.Inject
 
 class DetailsFragment : Fragment() {
 
@@ -23,6 +26,8 @@ class DetailsFragment : Fragment() {
     private var id1=0
 
     private var detailsActionsListener: DetailsActions? = null
+    @Inject
+    lateinit var catalogue: Catalogue
 
     interface DetailsActions {
         fun initializeData()
@@ -44,6 +49,9 @@ class DetailsFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        val component = DaggerMagicBox.builder().build()
+        catalogue = component.provideCatalogue()
+
         editName = view.findViewById(R.id.editStudentName)
         editLastname = view.findViewById(R.id.editStudentLastname)
         editPhoto = view.findViewById(R.id.editStudentPhoto)
@@ -61,9 +69,9 @@ class DetailsFragment : Fragment() {
 
     fun initializeData(id: Int) {
         this.id1 = id
-        val student = Catalogue.instance.list.get(id)
-        editName!!.setText(student.firstName)
-        editLastname!!.setText(student.lastName)
-        ImageLoaderUtil.loadImage(editPhoto!!, student.textUrl!!)
+        val student = catalogue.list.get(id)
+        editStudentName.setText(student.firstName)
+        editStudentLastname.setText(student.lastName)
+        ImageLoaderUtil.loadImage(editStudentPhoto, student.textUrl.toString())
     }
 }

@@ -1,6 +1,7 @@
 package android.itacademy.by.dz6.fragments
 
 import android.content.Context
+import android.itacademy.by.dz6.dagger.DaggerMagicBox
 import android.itacademy.by.dz6.recycle.StudentAdapter
 import android.itacademy.by.dz6.student.Catalogue
 import android.itacademy.by.dz6.student.Student
@@ -19,6 +20,7 @@ import android.view.ViewGroup
 import android.widget.EditText
 
 import java.util.ArrayList
+import javax.inject.Inject
 
 class StudentListFragment : Fragment() {
 
@@ -27,6 +29,8 @@ class StudentListFragment : Fragment() {
     private var catalogueCopy: MutableList<Student>? = null
 
     lateinit var onAddClickListener: OnAddClickListener
+    @Inject
+    lateinit var catalogue: Catalogue
 
     interface OnAddClickListener {
         fun startCreateActivity()
@@ -34,7 +38,7 @@ class StudentListFragment : Fragment() {
 
     override fun onAttach(context: Context?) {
         super.onAttach(context)
-        onAddClickListener = (context as OnAddClickListener?)!!
+        onAddClickListener = (context as OnAddClickListener)
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
@@ -43,6 +47,9 @@ class StudentListFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        val component = DaggerMagicBox.builder().build()
+        catalogue = component.provideCatalogue()
 
         catalogueCopy = ArrayList()
         adapter = StudentAdapter(view.context)
@@ -71,8 +78,8 @@ class StudentListFragment : Fragment() {
             }
         })
 
-        for (i in 0 until Catalogue.instance.list.size) {
-            catalogueCopy!!.add(Catalogue.instance.list.get(i))
+        for (i in 0 until catalogue.list.size) {
+            catalogueCopy!!.add(catalogue.list.get(i))
         }
     }
 
@@ -80,8 +87,8 @@ class StudentListFragment : Fragment() {
     private fun filter(text: String) {
         val filteredList = ArrayList<Student>()
         val originalList = ArrayList<Student>()
-        for (i in 0 until Catalogue.instance.list.size) {
-            originalList.add(Catalogue.instance.list.get(i))
+        for (i in 0 until catalogue.list.size) {
+            originalList.add(catalogue.list.get(i))
         }
         if (!TextUtils.isEmpty(text)) {
             for (student in originalList) {

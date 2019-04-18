@@ -1,23 +1,31 @@
 package android.itacademy.by.dz6.activities
 
 import android.content.Intent
+import android.itacademy.by.dz6.dagger.DaggerMagicBox
 import android.itacademy.by.dz6.fragments.DetailsFragment
 import android.itacademy.by.dz6.fragments.StudentListFragment
 import android.itacademy.by.dz6.recycle.StudentAdapter
 import android.itacademy.by.dz6.student.Catalogue
 import android.itacademy.by.menu.R
 import android.os.Bundle
-import android.support.v4.app.FragmentTransaction
 import android.support.v7.app.AppCompatActivity
 import android.view.View
+import javax.inject.Inject
 
 class MainActivity : AppCompatActivity(), StudentListFragment.OnAddClickListener, StudentAdapter.OnItemClickListener, DetailsFragment.DetailsActions {
 
     private var dualPan: Boolean = false
     private var id: Int = 0
 
+    @Inject
+    lateinit var catalogue: Catalogue
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+        val component = DaggerMagicBox.builder().build()
+        catalogue = component.provideCatalogue()
+
         setContentView(R.layout.main_layout)
         val detailsFrame = findViewById<View>(R.id.fragmentDetails)
         if (detailsFrame != null) {
@@ -59,14 +67,14 @@ class MainActivity : AppCompatActivity(), StudentListFragment.OnAddClickListener
     }
 
     override fun saveAndExit(id: Int, name: String, lastName: String) {
-        Catalogue.instance.list.get(id).firstName = name
-        Catalogue.instance.list.get(id).lastName=lastName
+        catalogue.list.get(id).firstName = name
+        catalogue.list.get(id).lastName = lastName
         removeDetailsFragment()
         refresh()
     }
 
     override fun deleteAndExit(id: Int) {
-        Catalogue.instance.list.removeAt(id)
+        catalogue.list.removeAt(id)
         removeDetailsFragment()
         refresh()
     }
@@ -75,7 +83,7 @@ class MainActivity : AppCompatActivity(), StudentListFragment.OnAddClickListener
         val studentListFragment = supportFragmentManager
                 .findFragmentById(R.id.fragmentRecycle) as StudentListFragment?
         if (studentListFragment != null) {
-            studentListFragment.adapter!!.notifyDataSetChanged()
+            studentListFragment.adapter?.notifyDataSetChanged()
         }
     }
 

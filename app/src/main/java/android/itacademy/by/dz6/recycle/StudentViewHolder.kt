@@ -1,5 +1,6 @@
 package android.itacademy.by.dz6.recycle
 
+import android.itacademy.by.dz6.imageloader.ImageLoaderUtil
 import android.itacademy.by.dz6.student.Student
 import android.itacademy.by.menu.R
 import android.support.v7.widget.RecyclerView

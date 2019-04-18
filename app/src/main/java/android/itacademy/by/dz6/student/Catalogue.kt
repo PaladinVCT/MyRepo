@@ -1,7 +1,9 @@
 package android.itacademy.by.dz6.student
 
 import java.util.ArrayList
+import javax.inject.Singleton
 
+@Singleton
 class Catalogue {
     val list = ArrayList<Student>()
 
