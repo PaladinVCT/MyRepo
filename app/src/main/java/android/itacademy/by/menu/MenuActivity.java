@@ -8,7 +8,11 @@ import android.itacademy.by.dz3.ImageActivity;
 import android.itacademy.by.dz3.LoginActivity;
 import android.itacademy.by.dz4.ClockActivity;
 import android.itacademy.by.dz4.SovaActivity;
+
 import android.itacademy.by.dz6.activities.MainActivity;
+
+import android.itacademy.by.dz5.Dz5Activity;
+
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.view.View;
@@ -73,10 +77,16 @@ public class MenuActivity extends Activity implements View.OnClickListener {
                 startActivity(intent6);
                 overridePendingTransition(R.anim.entering, R.anim.exiting);
                 break;
+
             case R.id.dz6Button:
                 Intent intent8 = new Intent(this, MainActivity.class);
                 startActivity(intent8);
-                overridePendingTransition(R.anim.entering,R.anim.exiting);
+
+            case R.id.dz5Button:
+                Intent intent7 = new Intent(this, Dz5Activity.class);
+                startActivity(intent7);
+
+                overridePendingTransition(R.anim.entering, R.anim.exiting);
                 break;
         }
     }
