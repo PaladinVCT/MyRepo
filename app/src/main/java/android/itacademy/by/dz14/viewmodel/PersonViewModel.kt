@@ -31,7 +31,7 @@ class PersonViewModel : ViewModel() {
     companion object {
 
         @JvmStatic
-        @BindingAdapter("imageUrl")
+        @BindingAdapter("app:src")
         fun loadImage(view: ImageView, url: String) {
             android.itacademy.by.dz14.imageloader.ImageLoaderUtil.loadImage(view,url)
         }
